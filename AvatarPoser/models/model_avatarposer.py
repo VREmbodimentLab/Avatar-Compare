@@ -274,7 +274,7 @@ class ModelAvatarPoser(ModelBase):
                     E_global_orientation_tensor = torch.cat([E_global_orientation_1,E_global_orientation_2], dim=0)
                     E_joint_rotation_tensor = torch.cat([E_joint_rotation_1,E_joint_rotation_2], dim=0)
 
-``
+
             self.E_global_orientation = E_global_orientation_tensor
             self.E_joint_rotation = E_joint_rotation_tensor
             self.E = torch.cat([E_global_orientation_tensor, E_joint_rotation_tensor],dim=-1).to(self.device)   

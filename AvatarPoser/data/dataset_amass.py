@@ -28,18 +28,17 @@ class AMASS_Dataset(Dataset):
 
         self.batch_size = opt['dataloader_batch_size']
         dataroot = opt['dataroot']
-        filenames_train = os.path.join(dataroot, '*/train/*.pkl')
+        filenames_train = os.path.join(dataroot, 'train/*.pkl')
         filenames_test = os.path.join(dataroot, 'test/*.pkl')
         print(filenames_test)
 
 # CMU,BioMotionLab_NTroje,MPI_HDM05
         if self.opt['phase'] == 'train':
-#            self.filename_list = glob.glob('data_fps60/*/train/*.pkl')
-            self.filename_list = glob.glob(filenames_train)
+           self.filename_list = glob.glob('data_fps60/*/train/*.pkl')
+            #self.filename_list = glob.glob(filenames_train)
         else:
-#            self.filename_list = glob.glob('data_fps60/*/test/*.pkl')
-            self.filename_list = glob.glob(filenames_test)
-
+            self.filename_list = glob.glob('data_fps60/*/test/*.pkl')
+            #self.filename_list = glob.glob(filenames_test)
             print('-------------------------------number of test data is {}'.format(len(self.filename_list)))
 
     def __len__(self):
