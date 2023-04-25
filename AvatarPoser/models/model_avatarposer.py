@@ -12,11 +12,11 @@ from utils.utils_regularizers import regularizer_orth, regularizer_clip
 from human_body_prior.tools.angle_continuous_repres import geodesic_loss_R
 from IPython import embed
 from utils.utils_transform import bgs
-from utils import utils_transform
+from utils import utils_transform, smpl_fk
 #from utils import utils_visualize as vis
 from human_body_prior.tools.rotation_tools import aa2matrot,local2global_pose,matrot2aa
 import gc
-
+from utils.torch_fk import SMPLHForwardKinematics,Rotation
 
 
 class ModelAvatarPoser(ModelBase):

@@ -2,14 +2,14 @@ import torch
 import torch.nn as nn
 from IPython import embed
 import math
-from utils import utils_transform
-
+from utils import utils_transform, smpl_fk
+from utils.torch_fk import SMPLHForwardKinematics,Rotation
 
 nn.Module.dump_patches = True
 
 
 
-
+fk_engine = SMPLHForwardKinematics()
 class AvatarPoser(nn.Module):
     def __init__(self, input_dim, output_dim, num_layer, embed_dim, nhead, body_model, device):
         super(AvatarPoser, self).__init__()
@@ -33,12 +33,12 @@ class AvatarPoser(nn.Module):
         self.body_model = body_model
 
     @staticmethod
-    def fk_module(global_orientation, joint_rotation, body_model):
+    def fk_module(global_orientation, joint_rotation):
 
         global_orientation = utils_transform.sixd2aa(global_orientation.reshape(-1,6)).reshape(global_orientation.shape[0],-1).float()
         joint_rotation = utils_transform.sixd2aa(joint_rotation.reshape(-1,6)).reshape(joint_rotation.shape[0],-1).float()
-        body_pose = body_model(**{'pose_body':joint_rotation, 'root_orient':global_orientation})
-        joint_position = body_pose.Jtr
+        
+        joint_position = fk_engine.from_aa(torch.cat([global_orientation, joint_rotation], dim = 1).reshape(global_orientation.shape[0], -1))
 
         return joint_position
 
@@ -75,7 +75,7 @@ class AvatarPoser(nn.Module):
         global_orientation = self.stabilizer(x)
         joint_rotation = self.joint_rotation_decoder(x)
         if do_fk:
-            joint_position = self.fk_module(global_orientation, joint_rotation, self.body_model)
+            joint_position = self.fk_module(global_orientation, joint_rotation)
             return global_orientation, joint_rotation, joint_position
         else:
             return global_orientation, joint_rotation
