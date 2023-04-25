@@ -292,8 +292,10 @@ class ModelAvatarPoser(ModelBase):
             
             head2root_rotation = rotation_global_matrot[:,15,:]
 
+            #here
             body_pose_local_pred=self.bm(**{'pose_body':predicted_angle[...,3:66]})
             head2root_translation = body_pose_local_pred.Jtr[:,15,:]
+
             T_head2root_pred[:,:3,:3] = head2root_rotation
             T_head2root_pred[:,:3,3] = head2root_translation
             t_head2world = T_head2world[:,:3,3].clone()
@@ -302,17 +304,20 @@ class ModelAvatarPoser(ModelBase):
 
             rotation_root2world_pred = matrot2aa(T_root2world_pred[:,:3,:3])
             translation_root2world_pred = T_root2world_pred[:,:3,3]
+            #here
             body_pose_local=self.bm(**{'pose_body':predicted_angle[...,3:66], 'root_orient':predicted_angle[...,:3]})
             position_global_full_local = body_pose_local.Jtr[:,:22,:]
+
             t_head2root = position_global_full_local[:,15,:]
             t_root2world = -t_head2root+t_head2world.cuda()
 
+            #here
             self.predicted_body=self.bm(**{'pose_body':predicted_angle[...,3:66], 'root_orient':predicted_angle[...,:3], 'trans': t_root2world}) 
             # No stabilizer: 'root_orient':rotation_root2world_pred.cuda()
 
             #print(self.predicted_body)
-
-            self.predicted_position = self.predicted_body.Jtr[:,:22,:]
+            #here
+            self.predicted_position = self.predicted_body.Jtr[:,:22,:]  
             
             self.predicted_angle = predicted_angle
             self.predicted_translation = t_root2world
@@ -324,7 +329,7 @@ class ModelAvatarPoser(ModelBase):
                 body_parms[k] = v.squeeze().cuda()
                 body_parms[k] = body_parms[k][-predicted_angle.shape[0]:,...]
 
-
+            #here
             self.gt_body=self.bm(**{k:v for k,v in body_parms.items() if k in ['pose_body','trans', 'root_orient']})
             self.gt_position = self.gt_body.Jtr[:,:22,:]
 
