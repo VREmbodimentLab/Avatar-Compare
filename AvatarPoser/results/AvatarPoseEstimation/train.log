@@ -15766,3 +15766,775 @@ AvatarPoser(
 23-04-18 16:46:12.380 : <epoch:  6, iter:     500, lr:1.000e-04> total_loss: 1.351e-01 global_orientation_loss: 8.364e-02 joint_rotation_loss: 8.093e-02 joint_position_loss: 5.253e-02 
 23-04-18 16:47:28.015 : <epoch: 13, iter:   1,000, lr:1.000e-04> total_loss: 1.220e-01 global_orientation_loss: 7.823e-02 joint_rotation_loss: 7.403e-02 joint_position_loss: 4.636e-02 
 23-04-18 16:48:41.530 : <epoch: 19, iter:   1,500, lr:1.000e-04> total_loss: 1.094e-01 global_orientation_loss: 6.813e-02 joint_rotation_loss: 6.864e-02 joint_position_loss: 3.942e-02 
+23-04-25 10:06:56.972 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 500
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-25 10:06:56.975 : Random seed: 5354
+23-04-25 10:06:57.863 : Number of train images: 64, iters: 1
+23-04-25 10:07:29.667 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 500
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-25 10:07:29.670 : Random seed: 1040
+23-04-25 10:07:30.249 : Number of train images: 64, iters: 1
+23-04-25 10:09:29.207 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 500
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-25 10:09:29.211 : Random seed: 9458
+23-04-25 10:09:29.807 : Number of train images: 64, iters: 1
+23-04-25 10:09:30.535 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-25 10:09:31.758 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ |  0.000 | -0.143 |  0.157 |  0.039 | torch.Size([256, 54]) || linear_embedding.weight
+ |  0.001 | -0.135 |  0.136 |  0.081 | torch.Size([256]) || linear_embedding.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ |  0.000 | -0.076 |  0.074 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ | -0.000 | -0.077 |  0.080 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ | -0.000 | -0.031 |  0.030 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ |  0.000 | -0.068 |  0.085 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ |  0.000 | -0.081 |  0.086 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ |  0.000 | -0.028 |  0.030 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ | -0.000 | -0.068 |  0.072 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ | -0.000 | -0.082 |  0.091 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ |  0.000 | -0.028 |  0.031 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ |  0.000 | -0.072 |  0.078 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ |  0.002 | -0.062 |  0.062 |  0.037 | torch.Size([256]) || stabilizer.0.bias
+ |  0.000 | -0.059 |  0.076 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ | -0.019 | -0.056 |  0.039 |  0.038 | torch.Size([6]) || stabilizer.2.bias
+ |  0.000 | -0.082 |  0.076 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ |  0.003 | -0.061 |  0.062 |  0.037 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ | -0.000 | -0.078 |  0.067 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ |  0.002 | -0.062 |  0.062 |  0.036 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-25 10:11:23.586 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 500
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-25 10:11:23.589 : Random seed: 4050
+23-04-25 10:11:24.197 : Number of train images: 1,867, iters: 30
+23-04-25 10:11:24.888 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-25 10:11:25.944 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ |  0.000 | -0.161 |  0.139 |  0.038 | torch.Size([256, 54]) || linear_embedding.weight
+ | -0.000 | -0.136 |  0.136 |  0.080 | torch.Size([256]) || linear_embedding.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ |  0.000 | -0.073 |  0.073 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ | -0.000 | -0.083 |  0.089 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ | -0.000 | -0.030 |  0.028 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ | -0.000 | -0.081 |  0.078 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ |  0.000 | -0.076 |  0.085 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ |  0.000 | -0.030 |  0.028 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ |  0.000 | -0.087 |  0.070 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ | -0.000 | -0.083 |  0.089 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ |  0.000 | -0.029 |  0.029 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ |  0.000 | -0.074 |  0.079 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ |  0.000 | -0.062 |  0.062 |  0.036 | torch.Size([256]) || stabilizer.0.bias
+ |  0.000 | -0.054 |  0.064 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ | -0.000 | -0.057 |  0.039 |  0.040 | torch.Size([6]) || stabilizer.2.bias
+ |  0.000 | -0.074 |  0.081 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ |  0.002 | -0.062 |  0.062 |  0.036 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ |  0.000 | -0.068 |  0.079 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ | -0.003 | -0.061 |  0.061 |  0.037 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-25 10:13:51.599 : <epoch: 17, iter:     500, lr:1.000e-04> total_loss: 1.485e-01 global_orientation_loss: 1.190e-01 joint_rotation_loss: 8.498e-02 joint_position_loss: 6.109e-02 
+23-04-25 10:16:09.243 : <epoch: 34, iter:   1,000, lr:1.000e-04> total_loss: 1.006e-01 global_orientation_loss: 7.707e-02 joint_rotation_loss: 6.301e-02 joint_position_loss: 3.604e-02 
+23-04-25 10:18:19.082 : <epoch: 51, iter:   1,500, lr:1.000e-04> total_loss: 9.784e-02 global_orientation_loss: 7.305e-02 joint_rotation_loss: 6.122e-02 joint_position_loss: 3.516e-02 
+23-04-25 10:20:32.752 : <epoch: 68, iter:   2,000, lr:1.000e-04> total_loss: 1.043e-01 global_orientation_loss: 8.226e-02 joint_rotation_loss: 6.230e-02 joint_position_loss: 4.037e-02 
+23-04-25 10:23:07.778 : <epoch: 86, iter:   2,500, lr:1.000e-04> total_loss: 8.575e-02 global_orientation_loss: 7.047e-02 joint_rotation_loss: 5.322e-02 joint_position_loss: 3.112e-02 
+23-04-25 10:25:17.613 : Saving the final model.
+23-04-25 10:25:17.640 : End of training.
+23-04-25 10:30:54.716 : testing the sample 0/207
+23-04-25 10:30:57.930 : testing the sample 1/207
+23-04-25 10:30:58.623 : testing the sample 2/207
+23-04-25 10:30:58.970 : testing the sample 3/207
+23-04-25 10:30:59.348 : testing the sample 4/207
+23-04-25 10:30:59.670 : testing the sample 5/207
+23-04-25 10:31:00.013 : testing the sample 6/207
+23-04-25 10:31:00.379 : testing the sample 7/207
+23-04-25 10:31:00.708 : testing the sample 8/207
+23-04-25 10:31:01.040 : testing the sample 9/207
+23-04-25 10:31:01.343 : testing the sample 10/207
+23-04-25 10:31:01.672 : testing the sample 11/207
+23-04-25 10:31:01.960 : testing the sample 12/207
+23-04-25 10:31:02.518 : testing the sample 13/207
+23-04-25 10:31:02.817 : testing the sample 14/207
+23-04-25 10:31:03.130 : testing the sample 15/207
+23-04-25 10:31:03.430 : testing the sample 16/207
+23-04-25 10:31:03.754 : testing the sample 17/207
+23-04-25 10:31:04.055 : testing the sample 18/207
+23-04-25 10:31:04.376 : testing the sample 19/207
+23-04-25 10:31:04.689 : testing the sample 20/207
+23-04-25 10:31:05.020 : testing the sample 21/207
+23-04-25 10:31:05.313 : testing the sample 22/207
+23-04-25 10:31:05.681 : testing the sample 23/207
+23-04-25 10:31:06.346 : testing the sample 24/207
+23-04-25 10:31:06.708 : testing the sample 25/207
+23-04-25 10:31:07.094 : testing the sample 26/207
+23-04-25 10:31:07.402 : testing the sample 27/207
+23-04-25 10:31:07.697 : testing the sample 28/207
+23-04-25 10:31:08.000 : testing the sample 29/207
+23-04-25 10:31:08.308 : testing the sample 30/207
+23-04-25 10:31:08.620 : testing the sample 31/207
+23-04-25 10:31:08.928 : testing the sample 32/207
+23-04-25 10:31:09.234 : testing the sample 33/207
+23-04-25 10:31:09.570 : testing the sample 34/207
+23-04-25 10:31:10.216 : testing the sample 35/207
+23-04-25 10:31:10.563 : testing the sample 36/207
+23-04-25 10:31:10.889 : testing the sample 37/207
+23-04-25 10:31:11.189 : testing the sample 38/207
+23-04-25 10:31:11.520 : testing the sample 39/207
+23-04-25 10:31:11.864 : testing the sample 40/207
+23-04-25 10:31:12.163 : testing the sample 41/207
+23-04-25 10:31:12.454 : testing the sample 42/207
+23-04-25 10:31:12.745 : testing the sample 43/207
+23-04-25 10:31:13.040 : testing the sample 44/207
+23-04-25 10:31:13.345 : testing the sample 45/207
+23-04-25 10:31:13.707 : testing the sample 46/207
+23-04-25 10:31:14.107 : testing the sample 47/207
+23-04-25 10:31:14.401 : testing the sample 48/207
+23-04-25 10:31:14.696 : testing the sample 49/207
+23-04-25 10:31:15.013 : testing the sample 50/207
+23-04-25 10:31:15.321 : testing the sample 51/207
+23-04-25 10:31:15.610 : testing the sample 52/207
+23-04-25 10:31:15.909 : testing the sample 53/207
+23-04-25 10:31:16.382 : testing the sample 54/207
+23-04-25 10:31:16.835 : testing the sample 55/207
+23-04-25 10:31:17.387 : testing the sample 56/207
+23-04-25 10:31:17.721 : testing the sample 57/207
+23-04-25 10:31:18.118 : testing the sample 58/207
+23-04-25 10:31:18.592 : testing the sample 59/207
+23-04-25 10:31:19.029 : testing the sample 60/207
+23-04-25 10:31:19.464 : testing the sample 61/207
+23-04-25 10:31:19.906 : testing the sample 62/207
+23-04-25 10:31:20.226 : testing the sample 63/207
+23-04-25 10:31:20.525 : testing the sample 64/207
+23-04-25 10:31:20.821 : testing the sample 65/207
+23-04-25 10:31:21.276 : testing the sample 66/207
+23-04-25 10:31:21.659 : testing the sample 67/207
+23-04-25 10:31:22.009 : testing the sample 68/207
+23-04-25 10:31:22.820 : testing the sample 69/207
+23-04-25 10:31:23.318 : testing the sample 70/207
+23-04-25 10:31:23.885 : testing the sample 71/207
+23-04-25 10:31:24.375 : testing the sample 72/207
+23-04-25 10:31:24.948 : testing the sample 73/207
+23-04-25 10:31:25.374 : testing the sample 74/207
+23-04-25 10:31:25.748 : testing the sample 75/207
+23-04-25 10:31:26.065 : testing the sample 76/207
+23-04-25 10:31:26.686 : testing the sample 77/207
+23-04-25 10:31:26.992 : testing the sample 78/207
+23-04-25 10:31:27.764 : testing the sample 79/207
+23-04-25 10:31:28.094 : testing the sample 80/207
+23-04-25 10:31:28.469 : testing the sample 81/207
+23-04-25 10:31:28.910 : testing the sample 82/207
+23-04-25 10:31:29.440 : testing the sample 83/207
+23-04-25 10:31:29.834 : testing the sample 84/207
+23-04-25 10:31:30.290 : testing the sample 85/207
+23-04-25 10:31:30.657 : testing the sample 86/207
+23-04-25 10:31:30.959 : testing the sample 87/207
+23-04-25 10:31:31.290 : testing the sample 88/207
+23-04-25 10:31:31.614 : testing the sample 89/207
+23-04-25 10:31:32.395 : testing the sample 90/207
+23-04-25 10:31:32.752 : testing the sample 91/207
+23-04-25 10:31:33.126 : testing the sample 92/207
+23-04-25 10:31:33.472 : testing the sample 93/207
+23-04-25 10:31:33.836 : testing the sample 94/207
+23-04-25 10:31:34.180 : testing the sample 95/207
+23-04-25 10:31:34.542 : testing the sample 96/207
+23-04-25 10:31:34.954 : testing the sample 97/207
+23-04-25 10:31:35.325 : testing the sample 98/207
+23-04-25 10:31:35.738 : testing the sample 99/207
+23-04-25 10:31:36.032 : testing the sample 100/207
+23-04-25 10:31:36.696 : testing the sample 101/207
+23-04-25 10:31:37.053 : testing the sample 102/207
+23-04-25 10:31:37.407 : testing the sample 103/207
+23-04-25 10:31:38.232 : testing the sample 104/207
+23-04-25 10:31:39.154 : testing the sample 105/207
+23-04-25 10:31:40.167 : testing the sample 106/207
+23-04-25 10:31:40.487 : testing the sample 107/207
+23-04-25 10:31:40.817 : testing the sample 108/207
+23-04-25 10:31:41.175 : testing the sample 109/207
+23-04-25 10:31:41.636 : testing the sample 110/207
+23-04-25 10:31:41.998 : testing the sample 111/207
+23-04-25 10:31:42.412 : testing the sample 112/207
+23-04-25 10:31:42.760 : testing the sample 113/207
+23-04-25 10:31:43.068 : testing the sample 114/207
+23-04-25 10:31:43.368 : testing the sample 115/207
+23-04-25 10:31:43.677 : testing the sample 116/207
+23-04-25 10:31:44.000 : testing the sample 117/207
+23-04-25 10:31:44.323 : testing the sample 118/207
+23-04-25 10:31:44.676 : testing the sample 119/207
+23-04-25 10:31:45.006 : testing the sample 120/207
+23-04-25 10:31:45.342 : testing the sample 121/207
+23-04-25 10:31:45.658 : testing the sample 122/207
+23-04-25 10:31:45.977 : testing the sample 123/207
+23-04-25 10:31:46.655 : testing the sample 124/207
+23-04-25 10:31:47.007 : testing the sample 125/207
+23-04-25 10:31:47.342 : testing the sample 126/207
+23-04-25 10:31:47.636 : testing the sample 127/207
+23-04-25 10:31:47.938 : testing the sample 128/207
+23-04-25 10:31:48.238 : testing the sample 129/207
+23-04-25 10:31:48.542 : testing the sample 130/207
+23-04-25 10:31:49.104 : testing the sample 131/207
+23-04-25 10:31:49.709 : testing the sample 132/207
+23-04-25 10:31:50.259 : testing the sample 133/207
+23-04-25 10:31:50.863 : testing the sample 134/207
+23-04-25 10:31:51.476 : testing the sample 135/207
+23-04-25 10:31:52.064 : testing the sample 136/207
+23-04-25 10:31:52.583 : testing the sample 137/207
+23-04-25 10:31:52.958 : testing the sample 138/207
+23-04-25 10:31:53.392 : testing the sample 139/207
+23-04-25 10:31:53.980 : testing the sample 140/207
+23-04-25 10:31:54.384 : testing the sample 141/207
+23-04-25 10:31:54.734 : testing the sample 142/207
+23-04-25 10:31:55.125 : testing the sample 143/207
+23-04-25 10:31:55.439 : testing the sample 144/207
+23-04-25 10:31:55.736 : testing the sample 145/207
+23-04-25 10:31:56.034 : testing the sample 146/207
+23-04-25 10:31:56.634 : testing the sample 147/207
+23-04-25 10:31:57.174 : testing the sample 148/207
+23-04-25 10:31:57.922 : testing the sample 149/207
+23-04-25 10:31:58.392 : testing the sample 150/207
+23-04-25 10:31:58.786 : testing the sample 151/207
+23-04-25 10:31:59.159 : testing the sample 152/207
+23-04-25 10:31:59.536 : testing the sample 153/207
+23-04-25 10:31:59.944 : testing the sample 154/207
+23-04-25 10:32:00.243 : testing the sample 155/207
+23-04-25 10:32:01.179 : testing the sample 156/207
+23-04-25 10:32:01.756 : testing the sample 157/207
+23-04-25 10:32:02.365 : testing the sample 158/207
+23-04-25 10:32:02.938 : testing the sample 159/207
+23-04-25 10:32:03.436 : testing the sample 160/207
+23-04-25 10:32:03.933 : testing the sample 161/207
+23-04-25 10:32:04.455 : testing the sample 162/207
+23-04-25 10:32:04.958 : testing the sample 163/207
+23-04-25 10:32:05.358 : testing the sample 164/207
+23-04-25 10:32:05.666 : testing the sample 165/207
+23-04-25 10:32:06.001 : testing the sample 166/207
+23-04-25 10:32:06.428 : testing the sample 167/207
+23-04-25 10:32:06.792 : testing the sample 168/207
+23-04-25 10:32:07.410 : testing the sample 169/207
+23-04-25 10:32:07.819 : testing the sample 170/207
+23-04-25 10:32:08.263 : testing the sample 171/207
+23-04-25 10:32:08.611 : testing the sample 172/207
+23-04-25 10:32:08.996 : testing the sample 173/207
+23-04-25 10:32:09.407 : testing the sample 174/207
+23-04-25 10:32:09.865 : testing the sample 175/207
+23-04-25 10:32:10.176 : testing the sample 176/207
+23-04-25 10:32:10.583 : testing the sample 177/207
+23-04-25 10:32:10.962 : testing the sample 178/207
+23-04-25 10:32:11.752 : testing the sample 179/207
+23-04-25 10:32:12.111 : testing the sample 180/207
+23-04-25 10:32:12.615 : testing the sample 181/207
+23-04-25 10:32:12.973 : testing the sample 182/207
+23-04-25 10:32:13.747 : testing the sample 183/207
+23-04-25 10:32:14.599 : testing the sample 184/207
+23-04-25 10:32:15.085 : testing the sample 185/207
+23-04-25 10:32:15.614 : testing the sample 186/207
+23-04-25 10:32:16.428 : testing the sample 187/207
+23-04-25 10:32:17.121 : testing the sample 188/207
+23-04-25 10:32:17.530 : testing the sample 189/207
+23-04-25 10:32:17.966 : testing the sample 190/207
+23-04-25 10:32:18.400 : testing the sample 191/207
+23-04-25 10:32:18.800 : testing the sample 192/207
+23-04-25 10:32:19.196 : testing the sample 193/207
+23-04-25 10:32:19.580 : testing the sample 194/207
+23-04-25 10:32:19.946 : testing the sample 195/207
+23-04-25 10:32:20.413 : testing the sample 196/207
+23-04-25 10:32:20.964 : testing the sample 197/207
+23-04-25 10:32:21.348 : testing the sample 198/207
+23-04-25 10:32:21.808 : testing the sample 199/207
+23-04-25 10:32:22.217 : testing the sample 200/207
+23-04-25 10:32:22.603 : testing the sample 201/207
+23-04-25 10:32:23.019 : testing the sample 202/207
+23-04-25 10:32:23.308 : testing the sample 203/207
+23-04-25 10:32:23.605 : testing the sample 204/207
+23-04-25 10:32:24.115 : testing the sample 205/207
+23-04-25 10:32:24.472 : testing the sample 206/207
+23-04-25 10:32:24.908 : Average rotational error [degree]: 8.96581, Average positional error [cm]: 26.72471, Average velocity error [cm/s]: 35.07404, Average positional error at hand [cm]: 26.45399
+
