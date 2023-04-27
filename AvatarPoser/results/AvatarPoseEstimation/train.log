@@ -16538,3 +16538,2027 @@ AvatarPoser(
 23-04-25 10:32:24.472 : testing the sample 206/207
 23-04-25 10:32:24.908 : Average rotational error [degree]: 8.96581, Average positional error [cm]: 26.72471, Average velocity error [cm/s]: 35.07404, Average positional error at hand [cm]: 26.45399
 
+23-04-27 12:53:28.009 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 500
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-27 12:53:28.020 : Random seed: 3216
+23-04-27 12:53:28.891 : Number of train images: 4,814, iters: 76
+23-04-27 12:53:30.518 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-27 12:53:32.418 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ | -0.001 | -0.144 |  0.166 |  0.038 | torch.Size([256, 54]) || linear_embedding.weight
+ |  0.007 | -0.136 |  0.135 |  0.078 | torch.Size([256]) || linear_embedding.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ | -0.000 | -0.086 |  0.072 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ |  0.000 | -0.091 |  0.088 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ |  0.000 | -0.028 |  0.029 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ |  0.000 | -0.078 |  0.069 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ |  0.000 | -0.081 |  0.081 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ | -0.000 | -0.028 |  0.027 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ |  0.000 | -0.071 |  0.081 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ | -0.000 | -0.077 |  0.091 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ |  0.000 | -0.029 |  0.034 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ |  0.000 | -0.068 |  0.082 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([256]) || stabilizer.0.bias
+ | -0.000 | -0.060 |  0.064 |  0.017 | torch.Size([6, 256]) || stabilizer.2.weight
+ |  0.011 | -0.060 |  0.058 |  0.045 | torch.Size([6]) || stabilizer.2.bias
+ | -0.000 | -0.073 |  0.070 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ | -0.006 | -0.062 |  0.061 |  0.036 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ |  0.000 | -0.075 |  0.075 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ |  0.001 | -0.060 |  0.062 |  0.036 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-27 13:01:48.220 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 500
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-27 13:01:48.228 : Random seed: 5975
+23-04-27 13:01:48.715 : Number of train images: 4,814, iters: 76
+23-04-27 13:02:04.189 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-27 13:02:05.376 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ |  0.001 | -0.166 |  0.140 |  0.039 | torch.Size([256, 54]) || linear_embedding.weight
+ | -0.005 | -0.134 |  0.135 |  0.079 | torch.Size([256]) || linear_embedding.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ |  0.000 | -0.082 |  0.090 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ |  0.000 | -0.086 |  0.082 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ |  0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ | -0.000 | -0.030 |  0.030 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ |  0.000 | -0.081 |  0.082 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ | -0.000 | -0.080 |  0.076 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ |  0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ | -0.000 | -0.027 |  0.029 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ | -0.000 | -0.079 |  0.075 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ |  0.000 | -0.080 |  0.091 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ |  0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ | -0.000 | -0.028 |  0.030 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ | -0.000 | -0.075 |  0.072 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ |  0.003 | -0.062 |  0.062 |  0.036 | torch.Size([256]) || stabilizer.0.bias
+ |  0.000 | -0.058 |  0.055 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ |  0.026 | -0.025 |  0.062 |  0.036 | torch.Size([6]) || stabilizer.2.bias
+ | -0.000 | -0.082 |  0.073 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ |  0.002 | -0.059 |  0.062 |  0.034 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ |  0.000 | -0.073 |  0.088 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ | -0.003 | -0.062 |  0.062 |  0.034 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-27 13:04:45.880 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 500
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-27 13:04:45.888 : Random seed: 3363
+23-04-27 13:04:46.405 : Number of train images: 4,814, iters: 76
+23-04-27 13:04:51.475 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-27 13:04:52.379 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ | -0.000 | -0.142 |  0.142 |  0.038 | torch.Size([256, 54]) || linear_embedding.weight
+ | -0.002 | -0.136 |  0.136 |  0.078 | torch.Size([256]) || linear_embedding.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ |  0.000 | -0.077 |  0.076 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ | -0.000 | -0.083 |  0.084 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.035 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ | -0.000 | -0.028 |  0.031 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ |  0.000 | -0.079 |  0.073 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ | -0.000 | -0.102 |  0.077 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.035 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ |  0.000 | -0.033 |  0.028 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ | -0.000 | -0.080 |  0.074 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ |  0.000 | -0.086 |  0.090 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.035 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ |  0.000 | -0.031 |  0.031 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ | -0.000 | -0.079 |  0.078 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ | -0.003 | -0.062 |  0.061 |  0.037 | torch.Size([256]) || stabilizer.0.bias
+ |  0.000 | -0.057 |  0.063 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ | -0.017 | -0.053 |  0.052 |  0.040 | torch.Size([6]) || stabilizer.2.bias
+ |  0.000 | -0.078 |  0.079 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ | -0.002 | -0.062 |  0.062 |  0.036 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ |  0.000 | -0.070 |  0.070 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ | -0.002 | -0.062 |  0.061 |  0.039 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-27 13:06:07.762 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 500
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-27 13:06:07.778 : Random seed: 6359
+23-04-27 13:06:08.389 : Number of train images: 4,814, iters: 76
+23-04-27 13:06:13.437 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-27 13:06:14.331 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ |  0.000 | -0.134 |  0.166 |  0.039 | torch.Size([256, 54]) || linear_embedding.weight
+ | -0.005 | -0.135 |  0.135 |  0.077 | torch.Size([256]) || linear_embedding.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ |  0.000 | -0.072 |  0.075 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ | -0.000 | -0.079 |  0.078 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ |  0.000 | -0.029 |  0.029 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ |  0.001 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ | -0.000 | -0.072 |  0.072 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ | -0.000 | -0.079 |  0.082 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ | -0.000 | -0.030 |  0.031 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ |  0.001 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ | -0.000 | -0.072 |  0.074 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ | -0.000 | -0.084 |  0.084 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ |  0.000 | -0.032 |  0.029 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ |  0.001 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ |  0.000 | -0.073 |  0.074 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ |  0.001 | -0.062 |  0.062 |  0.038 | torch.Size([256]) || stabilizer.0.bias
+ |  0.000 | -0.053 |  0.063 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ | -0.020 | -0.058 |  0.053 |  0.040 | torch.Size([6]) || stabilizer.2.bias
+ | -0.000 | -0.071 |  0.084 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ | -0.000 | -0.069 |  0.069 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ |  0.010 | -0.061 |  0.062 |  0.035 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-27 13:11:50.274 : <epoch:  6, iter:     500, lr:1.000e-04> total_loss: 1.267e-01 global_orientation_loss: 8.174e-02 joint_rotation_loss: 7.820e-02 joint_position_loss: 4.684e-02 
+23-04-27 13:15:44.523 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 500
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-27 13:15:44.531 : Random seed: 5556
+23-04-27 13:15:45.110 : Number of train images: 4,814, iters: 76
+23-04-27 13:15:50.260 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-27 13:15:51.328 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ |  0.000 | -0.153 |  0.142 |  0.039 | torch.Size([256, 54]) || linear_embedding.weight
+ | -0.001 | -0.135 |  0.136 |  0.081 | torch.Size([256]) || linear_embedding.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ | -0.000 | -0.077 |  0.069 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ | -0.000 | -0.092 |  0.084 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ | -0.000 | -0.031 |  0.028 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ | -0.000 | -0.074 |  0.074 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ |  0.000 | -0.081 |  0.080 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ | -0.000 | -0.031 |  0.031 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ | -0.000 | -0.080 |  0.066 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ |  0.000 | -0.081 |  0.080 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ | -0.000 | -0.030 |  0.029 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ |  0.000 | -0.080 |  0.071 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ | -0.001 | -0.061 |  0.062 |  0.038 | torch.Size([256]) || stabilizer.0.bias
+ |  0.000 | -0.059 |  0.065 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ | -0.006 | -0.024 |  0.046 |  0.026 | torch.Size([6]) || stabilizer.2.bias
+ | -0.000 | -0.072 |  0.076 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ | -0.001 | -0.062 |  0.062 |  0.037 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ | -0.000 | -0.068 |  0.071 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ |  0.003 | -0.058 |  0.062 |  0.034 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-27 13:17:10.310 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 500
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-27 13:17:10.330 : Random seed: 8104
+23-04-27 13:17:10.785 : Number of train images: 4,814, iters: 76
+23-04-27 13:17:15.897 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-27 13:17:16.809 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ |  0.000 | -0.157 |  0.168 |  0.038 | torch.Size([256, 54]) || linear_embedding.weight
+ | -0.002 | -0.136 |  0.131 |  0.076 | torch.Size([256]) || linear_embedding.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ | -0.000 | -0.071 |  0.083 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ | -0.000 | -0.082 |  0.096 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ |  0.000 | -0.030 |  0.030 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ | -0.001 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ |  0.000 | -0.073 |  0.080 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ |  0.000 | -0.087 |  0.080 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ | -0.000 | -0.029 |  0.029 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ | -0.001 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ | -0.000 | -0.075 |  0.073 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ | -0.000 | -0.081 |  0.083 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ |  0.000 | -0.031 |  0.030 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ | -0.001 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ |  0.000 | -0.069 |  0.083 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ | -0.002 | -0.062 |  0.061 |  0.036 | torch.Size([256]) || stabilizer.0.bias
+ | -0.000 | -0.057 |  0.059 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ |  0.004 | -0.031 |  0.055 |  0.037 | torch.Size([6]) || stabilizer.2.bias
+ | -0.000 | -0.085 |  0.072 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ | -0.002 | -0.062 |  0.061 |  0.034 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ |  0.000 | -0.073 |  0.075 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ |  0.002 | -0.062 |  0.061 |  0.037 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-27 13:23:45.010 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 500
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-27 13:23:45.018 : Random seed: 1056
+23-04-27 13:23:45.409 : Number of train images: 4,814, iters: 76
+23-04-27 13:23:46.056 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-27 13:23:47.119 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ |  0.000 | -0.163 |  0.152 |  0.038 | torch.Size([256, 54]) || linear_embedding.weight
+ |  0.000 | -0.136 |  0.132 |  0.083 | torch.Size([256]) || linear_embedding.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ |  0.000 | -0.069 |  0.086 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ |  0.000 | -0.082 |  0.088 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ |  0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ |  0.000 | -0.029 |  0.028 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ |  0.001 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ |  0.000 | -0.079 |  0.067 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ | -0.000 | -0.082 |  0.079 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ |  0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ |  0.000 | -0.028 |  0.030 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ |  0.001 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ |  0.000 | -0.073 |  0.070 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ |  0.000 | -0.089 |  0.079 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ |  0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ |  0.000 | -0.033 |  0.031 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ |  0.001 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ | -0.000 | -0.085 |  0.075 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ | -0.005 | -0.062 |  0.062 |  0.037 | torch.Size([256]) || stabilizer.0.bias
+ | -0.001 | -0.062 |  0.066 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ | -0.004 | -0.060 |  0.061 |  0.056 | torch.Size([6]) || stabilizer.2.bias
+ |  0.000 | -0.076 |  0.079 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ |  0.004 | -0.062 |  0.062 |  0.036 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ |  0.000 | -0.067 |  0.073 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ | -0.002 | -0.062 |  0.062 |  0.040 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-27 13:30:44.908 : <epoch:  6, iter:     500, lr:1.000e-04> total_loss: 1.267e-01 global_orientation_loss: 7.633e-02 joint_rotation_loss: 7.944e-02 joint_position_loss: 4.573e-02 
+23-04-27 13:31:47.903 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 10
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-27 13:31:47.911 : Random seed: 873
+23-04-27 13:31:48.304 : Number of train images: 4,814, iters: 76
+23-04-27 13:31:49.628 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-27 13:31:50.626 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ | -0.000 | -0.147 |  0.149 |  0.038 | torch.Size([256, 54]) || linear_embedding.weight
+ |  0.004 | -0.134 |  0.135 |  0.080 | torch.Size([256]) || linear_embedding.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ | -0.000 | -0.075 |  0.081 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ | -0.000 | -0.077 |  0.085 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ | -0.000 | -0.028 |  0.031 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ | -0.000 | -0.078 |  0.073 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ | -0.000 | -0.089 |  0.079 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ | -0.000 | -0.028 |  0.030 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ | -0.000 | -0.081 |  0.082 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ |  0.000 | -0.083 |  0.087 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ |  0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ | -0.000 | -0.029 |  0.033 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ | -0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ |  0.000 | -0.080 |  0.075 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ |  0.002 | -0.062 |  0.062 |  0.037 | torch.Size([256]) || stabilizer.0.bias
+ |  0.001 | -0.055 |  0.056 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ |  0.018 | -0.040 |  0.056 |  0.042 | torch.Size([6]) || stabilizer.2.bias
+ |  0.000 | -0.081 |  0.072 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ |  0.005 | -0.062 |  0.062 |  0.036 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ | -0.000 | -0.079 |  0.072 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ |  0.004 | -0.062 |  0.062 |  0.036 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-27 13:31:59.833 : <epoch:  0, iter:      10, lr:1.000e-04> total_loss: 6.297e-01 global_orientation_loss: 3.256e-01 joint_rotation_loss: 3.847e-01 joint_position_loss: 2.385e-01 
+23-04-27 13:32:03.997 : <epoch:  0, iter:      20, lr:1.000e-04> total_loss: 5.195e-01 global_orientation_loss: 2.532e-01 joint_rotation_loss: 3.475e-01 joint_position_loss: 1.669e-01 
+23-04-27 13:32:08.841 : <epoch:  0, iter:      30, lr:1.000e-04> total_loss: 4.747e-01 global_orientation_loss: 2.397e-01 joint_rotation_loss: 3.013e-01 joint_position_loss: 1.686e-01 
+23-04-27 13:32:14.426 : <epoch:  0, iter:      40, lr:1.000e-04> total_loss: 3.988e-01 global_orientation_loss: 2.124e-01 joint_rotation_loss: 2.361e-01 joint_position_loss: 1.585e-01 
+23-04-27 13:32:21.109 : <epoch:  0, iter:      50, lr:1.000e-04> total_loss: 3.098e-01 global_orientation_loss: 2.114e-01 joint_rotation_loss: 1.697e-01 joint_position_loss: 1.358e-01 
+23-04-27 13:32:31.108 : <epoch:  0, iter:      60, lr:1.000e-04> total_loss: 2.733e-01 global_orientation_loss: 2.043e-01 joint_rotation_loss: 1.375e-01 joint_position_loss: 1.318e-01 
+23-04-27 13:32:42.467 : <epoch:  0, iter:      70, lr:1.000e-04> total_loss: 2.572e-01 global_orientation_loss: 1.841e-01 joint_rotation_loss: 1.251e-01 joint_position_loss: 1.284e-01 
+23-04-27 13:32:58.619 : <epoch:  1, iter:      80, lr:1.000e-04> total_loss: 2.433e-01 global_orientation_loss: 1.987e-01 joint_rotation_loss: 1.183e-01 joint_position_loss: 1.210e-01 
+23-04-27 13:36:31.464 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 10
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-27 13:36:31.472 : Random seed: 5829
+23-04-27 13:36:31.854 : Number of train images: 4,814, iters: 76
+23-04-27 13:36:33.094 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-27 13:36:34.091 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ | -0.000 | -0.156 |  0.143 |  0.039 | torch.Size([256, 54]) || linear_embedding.weight
+ | -0.009 | -0.136 |  0.136 |  0.083 | torch.Size([256]) || linear_embedding.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ |  0.000 | -0.077 |  0.074 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ |  0.000 | -0.084 |  0.079 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.035 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ |  0.000 | -0.029 |  0.030 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ |  0.001 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ |  0.000 | -0.078 |  0.069 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ |  0.000 | -0.078 |  0.084 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.035 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ |  0.000 | -0.030 |  0.030 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ |  0.001 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ | -0.000 | -0.072 |  0.068 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ | -0.000 | -0.087 |  0.080 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.035 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ | -0.000 | -0.030 |  0.029 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ |  0.001 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ |  0.000 | -0.072 |  0.075 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ | -0.003 | -0.062 |  0.062 |  0.036 | torch.Size([256]) || stabilizer.0.bias
+ | -0.001 | -0.055 |  0.066 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ | -0.001 | -0.021 |  0.048 |  0.026 | torch.Size([6]) || stabilizer.2.bias
+ | -0.000 | -0.070 |  0.074 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ | -0.003 | -0.062 |  0.062 |  0.037 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ | -0.000 | -0.074 |  0.070 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ |  0.002 | -0.062 |  0.062 |  0.035 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-27 13:36:43.786 : <epoch:  0, iter:      10, lr:1.000e-04> total_loss: 7.091e-01 global_orientation_loss: 4.340e-01 joint_rotation_loss: 3.931e-01 joint_position_loss: 3.073e-01 
+23-04-27 13:36:47.976 : <epoch:  0, iter:      20, lr:1.000e-04> total_loss: 6.268e-01 global_orientation_loss: 3.809e-01 joint_rotation_loss: 3.475e-01 joint_position_loss: 2.717e-01 
+23-04-27 13:36:53.415 : <epoch:  0, iter:      30, lr:1.000e-04> total_loss: 5.101e-01 global_orientation_loss: 2.905e-01 joint_rotation_loss: 3.159e-01 joint_position_loss: 1.884e-01 
+23-04-27 13:37:00.087 : <epoch:  0, iter:      40, lr:1.000e-04> total_loss: 4.306e-01 global_orientation_loss: 2.265e-01 joint_rotation_loss: 2.690e-01 joint_position_loss: 1.571e-01 
+23-04-27 13:37:07.655 : <epoch:  0, iter:      50, lr:1.000e-04> total_loss: 3.353e-01 global_orientation_loss: 2.170e-01 joint_rotation_loss: 1.922e-01 joint_position_loss: 1.387e-01 
+23-04-27 13:37:18.632 : <epoch:  0, iter:      60, lr:1.000e-04> total_loss: 3.296e-01 global_orientation_loss: 2.143e-01 joint_rotation_loss: 1.340e-01 joint_position_loss: 1.914e-01 
+23-04-27 13:37:29.277 : <epoch:  0, iter:      70, lr:1.000e-04> total_loss: 2.985e-01 global_orientation_loss: 2.495e-01 joint_rotation_loss: 1.293e-01 joint_position_loss: 1.642e-01 
+23-04-27 13:38:53.485 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 10
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-27 13:38:53.493 : Random seed: 912
+23-04-27 13:38:53.977 : Number of train images: 4,814, iters: 76
+23-04-27 13:38:55.234 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-27 13:38:56.187 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ | -0.000 | -0.138 |  0.160 |  0.038 | torch.Size([256, 54]) || linear_embedding.weight
+ |  0.000 | -0.134 |  0.136 |  0.080 | torch.Size([256]) || linear_embedding.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ |  0.000 | -0.078 |  0.079 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ |  0.000 | -0.081 |  0.088 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ | -0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ | -0.000 | -0.029 |  0.031 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ | -0.000 | -0.074 |  0.084 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ |  0.000 | -0.083 |  0.077 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ | -0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ | -0.000 | -0.032 |  0.033 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ | -0.000 | -0.079 |  0.079 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ |  0.000 | -0.081 |  0.093 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ | -0.001 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ | -0.000 | -0.029 |  0.029 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ | -0.000 | -0.087 |  0.084 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ | -0.005 | -0.062 |  0.062 |  0.037 | torch.Size([256]) || stabilizer.0.bias
+ |  0.000 | -0.055 |  0.076 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ |  0.020 |  0.004 |  0.042 |  0.018 | torch.Size([6]) || stabilizer.2.bias
+ | -0.000 | -0.076 |  0.078 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ | -0.000 | -0.073 |  0.079 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ | -0.006 | -0.062 |  0.061 |  0.033 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-27 13:39:04.791 : <epoch:  0, iter:      10, lr:1.000e-04> total_loss: 6.803e-01 global_orientation_loss: 3.305e-01 joint_rotation_loss: 4.004e-01 joint_position_loss: 2.732e-01 
+23-04-27 13:39:08.757 : <epoch:  0, iter:      20, lr:1.000e-04> total_loss: 6.062e-01 global_orientation_loss: 2.671e-01 joint_rotation_loss: 3.685e-01 joint_position_loss: 2.323e-01 
+23-04-27 13:39:12.780 : <epoch:  0, iter:      30, lr:1.000e-04> total_loss: 4.882e-01 global_orientation_loss: 2.473e-01 joint_rotation_loss: 3.220e-01 joint_position_loss: 1.613e-01 
+23-04-27 13:39:17.550 : <epoch:  0, iter:      40, lr:1.000e-04> total_loss: 4.391e-01 global_orientation_loss: 2.330e-01 joint_rotation_loss: 2.661e-01 joint_position_loss: 1.683e-01 
+23-04-27 13:39:24.192 : <epoch:  0, iter:      50, lr:1.000e-04> total_loss: 4.107e-01 global_orientation_loss: 2.318e-01 joint_rotation_loss: 2.006e-01 joint_position_loss: 2.054e-01 
+23-04-27 13:39:33.442 : <epoch:  0, iter:      60, lr:1.000e-04> total_loss: 3.230e-01 global_orientation_loss: 2.223e-01 joint_rotation_loss: 1.626e-01 joint_position_loss: 1.559e-01 
+23-04-27 13:39:44.359 : <epoch:  0, iter:      70, lr:1.000e-04> total_loss: 2.940e-01 global_orientation_loss: 2.042e-01 joint_rotation_loss: 1.359e-01 joint_position_loss: 1.540e-01 
+23-04-27 13:40:00.610 : <epoch:  1, iter:      80, lr:1.000e-04> total_loss: 2.789e-01 global_orientation_loss: 2.016e-01 joint_rotation_loss: 1.333e-01 joint_position_loss: 1.416e-01 
+23-04-27 13:40:04.573 : <epoch:  1, iter:      90, lr:1.000e-04> total_loss: 2.301e-01 global_orientation_loss: 1.845e-01 joint_rotation_loss: 1.069e-01 joint_position_loss: 1.195e-01 
+23-04-27 13:40:08.229 : <epoch:  1, iter:     100, lr:1.000e-04> total_loss: 2.126e-01 global_orientation_loss: 1.420e-01 joint_rotation_loss: 9.854e-02 joint_position_loss: 1.113e-01 
+23-04-27 13:40:13.223 : <epoch:  1, iter:     110, lr:1.000e-04> total_loss: 2.299e-01 global_orientation_loss: 1.503e-01 joint_rotation_loss: 1.095e-01 joint_position_loss: 1.174e-01 
+23-04-27 13:40:19.004 : <epoch:  1, iter:     120, lr:1.000e-04> total_loss: 2.271e-01 global_orientation_loss: 1.417e-01 joint_rotation_loss: 1.113e-01 joint_position_loss: 1.131e-01 
+23-04-27 13:40:26.391 : <epoch:  1, iter:     130, lr:1.000e-04> total_loss: 2.162e-01 global_orientation_loss: 1.502e-01 joint_rotation_loss: 1.098e-01 joint_position_loss: 1.035e-01 
+23-04-27 13:40:36.944 : <epoch:  1, iter:     140, lr:1.000e-04> total_loss: 1.808e-01 global_orientation_loss: 1.120e-01 joint_rotation_loss: 9.923e-02 joint_position_loss: 7.930e-02 
+23-04-27 13:40:47.548 : <epoch:  1, iter:     150, lr:1.000e-04> total_loss: 1.679e-01 global_orientation_loss: 9.798e-02 joint_rotation_loss: 8.880e-02 joint_position_loss: 7.712e-02 
+23-04-27 13:40:58.127 : <epoch:  2, iter:     160, lr:1.000e-04> total_loss: 1.890e-01 global_orientation_loss: 1.206e-01 joint_rotation_loss: 9.855e-02 joint_position_loss: 8.808e-02 
+23-04-27 13:41:01.901 : <epoch:  2, iter:     170, lr:1.000e-04> total_loss: 1.679e-01 global_orientation_loss: 9.742e-02 joint_rotation_loss: 9.287e-02 joint_position_loss: 7.311e-02 
+23-04-27 13:41:05.898 : <epoch:  2, iter:     180, lr:1.000e-04> total_loss: 1.791e-01 global_orientation_loss: 1.040e-01 joint_rotation_loss: 9.501e-02 joint_position_loss: 8.199e-02 
+23-04-27 13:41:10.796 : <epoch:  2, iter:     190, lr:1.000e-04> total_loss: 1.792e-01 global_orientation_loss: 1.065e-01 joint_rotation_loss: 9.559e-02 joint_position_loss: 8.148e-02 
+23-04-27 13:41:16.603 : <epoch:  2, iter:     200, lr:1.000e-04> total_loss: 1.765e-01 global_orientation_loss: 1.116e-01 joint_rotation_loss: 9.697e-02 joint_position_loss: 7.725e-02 
+23-04-27 13:41:24.788 : <epoch:  2, iter:     210, lr:1.000e-04> total_loss: 1.737e-01 global_orientation_loss: 1.057e-01 joint_rotation_loss: 9.556e-02 joint_position_loss: 7.602e-02 
+23-04-27 13:41:35.227 : <epoch:  2, iter:     220, lr:1.000e-04> total_loss: 1.651e-01 global_orientation_loss: 9.806e-02 joint_rotation_loss: 9.096e-02 joint_position_loss: 7.216e-02 
+23-04-27 13:41:50.844 : <epoch:  3, iter:     230, lr:1.000e-04> total_loss: 1.743e-01 global_orientation_loss: 1.048e-01 joint_rotation_loss: 9.867e-02 joint_position_loss: 7.353e-02 
+23-04-27 13:41:54.427 : <epoch:  3, iter:     240, lr:1.000e-04> total_loss: 1.660e-01 global_orientation_loss: 9.734e-02 joint_rotation_loss: 9.291e-02 joint_position_loss: 7.113e-02 
+23-04-27 13:41:57.987 : <epoch:  3, iter:     250, lr:1.000e-04> total_loss: 1.585e-01 global_orientation_loss: 1.011e-01 joint_rotation_loss: 8.716e-02 joint_position_loss: 6.930e-02 
+23-04-27 13:42:02.019 : <epoch:  3, iter:     260, lr:1.000e-04> total_loss: 1.723e-01 global_orientation_loss: 1.074e-01 joint_rotation_loss: 9.615e-02 joint_position_loss: 7.400e-02 
+23-04-27 13:42:06.984 : <epoch:  3, iter:     270, lr:1.000e-04> total_loss: 1.497e-01 global_orientation_loss: 8.668e-02 joint_rotation_loss: 8.585e-02 joint_position_loss: 6.216e-02 
+23-04-27 13:42:13.439 : <epoch:  3, iter:     280, lr:1.000e-04> total_loss: 1.547e-01 global_orientation_loss: 9.887e-02 joint_rotation_loss: 8.994e-02 joint_position_loss: 6.280e-02 
+23-04-27 13:42:22.936 : <epoch:  3, iter:     290, lr:1.000e-04> total_loss: 1.502e-01 global_orientation_loss: 8.979e-02 joint_rotation_loss: 8.728e-02 joint_position_loss: 6.109e-02 
+23-04-27 13:42:34.264 : <epoch:  3, iter:     300, lr:1.000e-04> total_loss: 1.465e-01 global_orientation_loss: 8.945e-02 joint_rotation_loss: 8.441e-02 joint_position_loss: 6.030e-02 
+23-04-27 13:42:45.616 : <epoch:  4, iter:     310, lr:1.000e-04> total_loss: 1.701e-01 global_orientation_loss: 1.154e-01 joint_rotation_loss: 9.810e-02 joint_position_loss: 6.969e-02 
+23-04-27 13:42:49.107 : <epoch:  4, iter:     320, lr:1.000e-04> total_loss: 1.477e-01 global_orientation_loss: 8.719e-02 joint_rotation_loss: 8.721e-02 joint_position_loss: 5.875e-02 
+23-04-27 13:42:53.207 : <epoch:  4, iter:     330, lr:1.000e-04> total_loss: 1.604e-01 global_orientation_loss: 1.069e-01 joint_rotation_loss: 9.242e-02 joint_position_loss: 6.586e-02 
+23-04-27 13:42:57.440 : <epoch:  4, iter:     340, lr:1.000e-04> total_loss: 1.415e-01 global_orientation_loss: 9.883e-02 joint_rotation_loss: 8.402e-02 joint_position_loss: 5.552e-02 
+23-04-27 13:43:02.568 : <epoch:  4, iter:     350, lr:1.000e-04> total_loss: 1.487e-01 global_orientation_loss: 9.330e-02 joint_rotation_loss: 8.869e-02 joint_position_loss: 5.817e-02 
+23-04-27 13:43:09.422 : <epoch:  4, iter:     360, lr:1.000e-04> total_loss: 1.602e-01 global_orientation_loss: 9.127e-02 joint_rotation_loss: 9.429e-02 joint_position_loss: 6.412e-02 
+23-04-27 13:43:20.103 : <epoch:  4, iter:     370, lr:1.000e-04> total_loss: 1.407e-01 global_orientation_loss: 1.045e-01 joint_rotation_loss: 8.320e-02 joint_position_loss: 5.538e-02 
+23-04-27 13:43:34.670 : <epoch:  5, iter:     380, lr:1.000e-04> total_loss: 1.578e-01 global_orientation_loss: 9.404e-02 joint_rotation_loss: 9.300e-02 joint_position_loss: 6.294e-02 
+23-04-27 13:43:37.479 : <epoch:  5, iter:     390, lr:1.000e-04> total_loss: 1.422e-01 global_orientation_loss: 9.213e-02 joint_rotation_loss: 8.285e-02 joint_position_loss: 5.749e-02 
+23-04-27 13:43:40.891 : <epoch:  5, iter:     400, lr:1.000e-04> total_loss: 1.545e-01 global_orientation_loss: 1.073e-01 joint_rotation_loss: 8.886e-02 joint_position_loss: 6.346e-02 
+23-04-27 13:43:44.934 : <epoch:  5, iter:     410, lr:1.000e-04> total_loss: 1.477e-01 global_orientation_loss: 9.690e-02 joint_rotation_loss: 8.807e-02 joint_position_loss: 5.773e-02 
+23-04-27 13:43:49.875 : <epoch:  5, iter:     420, lr:1.000e-04> total_loss: 1.285e-01 global_orientation_loss: 8.020e-02 joint_rotation_loss: 7.898e-02 joint_position_loss: 4.791e-02 
+23-04-27 13:43:54.892 : <epoch:  5, iter:     430, lr:1.000e-04> total_loss: 1.485e-01 global_orientation_loss: 9.504e-02 joint_rotation_loss: 8.576e-02 joint_position_loss: 6.087e-02 
+23-04-27 13:44:04.037 : <epoch:  5, iter:     440, lr:1.000e-04> total_loss: 1.626e-01 global_orientation_loss: 1.128e-01 joint_rotation_loss: 9.254e-02 joint_position_loss: 6.779e-02 
+23-04-27 13:44:14.968 : <epoch:  5, iter:     450, lr:1.000e-04> total_loss: 1.445e-01 global_orientation_loss: 9.063e-02 joint_rotation_loss: 8.555e-02 joint_position_loss: 5.715e-02 
+23-04-27 13:44:25.380 : <epoch:  6, iter:     460, lr:1.000e-04> total_loss: 1.549e-01 global_orientation_loss: 9.685e-02 joint_rotation_loss: 8.775e-02 joint_position_loss: 6.519e-02 
+23-04-27 13:44:28.183 : <epoch:  6, iter:     470, lr:1.000e-04> total_loss: 1.393e-01 global_orientation_loss: 8.392e-02 joint_rotation_loss: 8.470e-02 joint_position_loss: 5.295e-02 
+23-04-27 13:44:32.167 : <epoch:  6, iter:     480, lr:1.000e-04> total_loss: 1.583e-01 global_orientation_loss: 9.278e-02 joint_rotation_loss: 8.866e-02 joint_position_loss: 6.782e-02 
+23-04-27 13:44:36.274 : <epoch:  6, iter:     490, lr:1.000e-04> total_loss: 1.280e-01 global_orientation_loss: 7.820e-02 joint_rotation_loss: 7.711e-02 joint_position_loss: 4.932e-02 
+23-04-27 13:44:41.338 : <epoch:  6, iter:     500, lr:1.000e-04> total_loss: 1.212e-01 global_orientation_loss: 7.776e-02 joint_rotation_loss: 7.515e-02 joint_position_loss: 4.452e-02 
+23-04-27 13:44:48.741 : <epoch:  6, iter:     510, lr:1.000e-04> total_loss: 1.404e-01 global_orientation_loss: 9.085e-02 joint_rotation_loss: 8.513e-02 joint_position_loss: 5.347e-02 
+23-04-27 13:44:59.723 : <epoch:  6, iter:     520, lr:1.000e-04> total_loss: 1.274e-01 global_orientation_loss: 9.766e-02 joint_rotation_loss: 7.803e-02 joint_position_loss: 4.746e-02 
+23-04-27 13:45:13.924 : <epoch:  7, iter:     530, lr:1.000e-04> total_loss: 1.374e-01 global_orientation_loss: 8.675e-02 joint_rotation_loss: 8.175e-02 joint_position_loss: 5.392e-02 
+23-04-27 13:45:17.061 : <epoch:  7, iter:     540, lr:1.000e-04> total_loss: 1.402e-01 global_orientation_loss: 9.695e-02 joint_rotation_loss: 8.243e-02 joint_position_loss: 5.581e-02 
+23-04-27 13:45:20.095 : <epoch:  7, iter:     550, lr:1.000e-04> total_loss: 1.312e-01 global_orientation_loss: 9.220e-02 joint_rotation_loss: 7.878e-02 joint_position_loss: 5.055e-02 
+23-04-27 13:45:23.742 : <epoch:  7, iter:     560, lr:1.000e-04> total_loss: 1.262e-01 global_orientation_loss: 8.600e-02 joint_rotation_loss: 7.546e-02 joint_position_loss: 4.903e-02 
+23-04-27 13:45:27.821 : <epoch:  7, iter:     570, lr:1.000e-04> total_loss: 1.234e-01 global_orientation_loss: 8.501e-02 joint_rotation_loss: 7.528e-02 joint_position_loss: 4.642e-02 
+23-04-27 13:45:33.294 : <epoch:  7, iter:     580, lr:1.000e-04> total_loss: 1.233e-01 global_orientation_loss: 7.240e-02 joint_rotation_loss: 7.593e-02 joint_position_loss: 4.592e-02 
+23-04-27 13:45:41.153 : <epoch:  7, iter:     590, lr:1.000e-04> total_loss: 1.259e-01 global_orientation_loss: 8.311e-02 joint_rotation_loss: 7.782e-02 joint_position_loss: 4.642e-02 
+23-04-27 13:45:52.585 : <epoch:  7, iter:     600, lr:1.000e-04> total_loss: 1.196e-01 global_orientation_loss: 6.456e-02 joint_rotation_loss: 7.516e-02 joint_position_loss: 4.310e-02 
+23-04-27 13:46:02.820 : <epoch:  8, iter:     610, lr:1.000e-04> total_loss: 1.394e-01 global_orientation_loss: 9.083e-02 joint_rotation_loss: 8.160e-02 joint_position_loss: 5.597e-02 
+23-04-27 13:46:05.266 : <epoch:  8, iter:     620, lr:1.000e-04> total_loss: 1.224e-01 global_orientation_loss: 8.350e-02 joint_rotation_loss: 7.237e-02 joint_position_loss: 4.838e-02 
+23-04-27 13:46:08.182 : <epoch:  8, iter:     630, lr:1.000e-04> total_loss: 1.355e-01 global_orientation_loss: 7.608e-02 joint_rotation_loss: 8.213e-02 joint_position_loss: 5.181e-02 
+23-04-27 13:46:12.106 : <epoch:  8, iter:     640, lr:1.000e-04> total_loss: 1.355e-01 global_orientation_loss: 8.206e-02 joint_rotation_loss: 8.058e-02 joint_position_loss: 5.325e-02 
+23-04-27 13:46:16.586 : <epoch:  8, iter:     650, lr:1.000e-04> total_loss: 1.254e-01 global_orientation_loss: 8.414e-02 joint_rotation_loss: 7.400e-02 joint_position_loss: 4.968e-02 
+23-04-27 13:46:22.743 : <epoch:  8, iter:     660, lr:1.000e-04> total_loss: 1.276e-01 global_orientation_loss: 9.044e-02 joint_rotation_loss: 7.745e-02 joint_position_loss: 4.838e-02 
+23-04-27 13:46:33.852 : <epoch:  8, iter:     670, lr:1.000e-04> total_loss: 1.308e-01 global_orientation_loss: 8.302e-02 joint_rotation_loss: 7.947e-02 joint_position_loss: 4.971e-02 
+23-04-27 13:46:48.468 : <epoch:  9, iter:     680, lr:1.000e-04> total_loss: 1.342e-01 global_orientation_loss: 8.844e-02 joint_rotation_loss: 8.315e-02 joint_position_loss: 4.931e-02 
+23-04-27 13:46:51.109 : <epoch:  9, iter:     690, lr:1.000e-04> total_loss: 1.361e-01 global_orientation_loss: 1.062e-01 joint_rotation_loss: 8.207e-02 joint_position_loss: 5.194e-02 
+23-04-27 13:46:55.041 : <epoch:  9, iter:     700, lr:1.000e-04> total_loss: 1.245e-01 global_orientation_loss: 8.348e-02 joint_rotation_loss: 7.499e-02 joint_position_loss: 4.783e-02 
+23-04-27 13:46:59.356 : <epoch:  9, iter:     710, lr:1.000e-04> total_loss: 1.219e-01 global_orientation_loss: 8.749e-02 joint_rotation_loss: 7.456e-02 joint_position_loss: 4.555e-02 
+23-04-27 13:47:04.522 : <epoch:  9, iter:     720, lr:1.000e-04> total_loss: 1.213e-01 global_orientation_loss: 8.101e-02 joint_rotation_loss: 7.510e-02 joint_position_loss: 4.457e-02 
+23-04-27 13:47:11.001 : <epoch:  9, iter:     730, lr:1.000e-04> total_loss: 1.209e-01 global_orientation_loss: 8.370e-02 joint_rotation_loss: 7.362e-02 joint_position_loss: 4.561e-02 
+23-04-27 13:47:19.955 : <epoch:  9, iter:     740, lr:1.000e-04> total_loss: 1.269e-01 global_orientation_loss: 8.526e-02 joint_rotation_loss: 7.884e-02 joint_position_loss: 4.635e-02 
+23-04-27 13:47:31.338 : <epoch:  9, iter:     750, lr:1.000e-04> total_loss: 1.216e-01 global_orientation_loss: 7.661e-02 joint_rotation_loss: 7.456e-02 joint_position_loss: 4.551e-02 
+23-04-27 13:47:31.929 : Saving the final model.
+23-04-27 13:47:31.977 : End of training.

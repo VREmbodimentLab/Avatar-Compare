@@ -33,12 +33,12 @@ class AvatarPoser(nn.Module):
         self.body_model = body_model
 
     @staticmethod
-    def fk_module(global_orientation, joint_rotation):
+    def fk_module(global_orientation, joint_rotation, body_model):
 
         global_orientation = utils_transform.sixd2aa(global_orientation.reshape(-1,6)).reshape(global_orientation.shape[0],-1).float()
         joint_rotation = utils_transform.sixd2aa(joint_rotation.reshape(-1,6)).reshape(joint_rotation.shape[0],-1).float()
-        
-        joint_position = fk_engine.from_aa(torch.cat([global_orientation, joint_rotation], dim = 1).reshape(global_orientation.shape[0], -1))
+        body_pose = body_model(**{'pose_body':joint_rotation, 'root_orient':global_orientation})
+        joint_position = body_pose.Jtr
 
         return joint_position
 
@@ -75,7 +75,7 @@ class AvatarPoser(nn.Module):
         global_orientation = self.stabilizer(x)
         joint_rotation = self.joint_rotation_decoder(x)
         if do_fk:
-            joint_position = self.fk_module(global_orientation, joint_rotation)
+            joint_position = self.fk_module(global_orientation, joint_rotation, self.body_model)
             return global_orientation, joint_rotation, joint_position
         else:
             return global_orientation, joint_rotation

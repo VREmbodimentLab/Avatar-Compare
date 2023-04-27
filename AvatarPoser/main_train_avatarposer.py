@@ -14,10 +14,11 @@ from models.select_model import define_Model
 from utils import utils_transform
 import pickle
 #from utils import utils_visualize as vis
-
+from torch.utils.tensorboard import SummaryWriter
 
 save_animation = False
 resolution = (800,800)
+writer = SummaryWriter()
 
 def main(json_path='options/train_avatarposer.json'):
 
@@ -133,9 +134,9 @@ def main(json_path='options/train_avatarposer.json'):
     # Step--4 (main training)
     # ----------------------------------------
     '''
-    for epoch in range(100):  # keep running
+    for epoch in range(10):  # keep running
+        print("epochstart")
         for i, train_data in enumerate(train_loader):
-
             current_step += 1
             # -------------------------------
             # 1) feed patch pairs
@@ -172,6 +173,7 @@ def main(json_path='options/train_avatarposer.json'):
                     message += '{:s}: {:.3e} '.format(k, v)
                 logger.info(message)
 
+            writer.add_scalar("Loss/train", message['total_loss'].item(), current_step)
             # -------------------------------
             # 5) save model
             # -------------------------------
@@ -235,7 +237,7 @@ def main(json_path='options/train_avatarposer.json'):
                 vel_error = sum(vel_error)/len(vel_error)
                 pos_error_hands = sum(pos_error_hands)/len(pos_error_hands)
 
-
+                
                 # testing log
                 logger.info('<epoch:{:3d}, iter:{:8,d}, Average rotational error [degree]: {:<.5f}, Average positional error [cm]: {:<.5f}, Average velocity error [cm/s]: {:<.5f}, Average positional error at hand [cm]: {:<.5f}\n'.format(epoch, current_step,rot_error*57.2958, pos_error*100, vel_error*100, pos_error_hands*100))
 

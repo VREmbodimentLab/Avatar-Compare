@@ -18,6 +18,8 @@ from human_body_prior.tools.rotation_tools import aa2matrot,local2global_pose,ma
 import gc
 from utils.torch_fk import SMPLHForwardKinematics,Rotation
 
+from torch.utils.tensorboard import SummaryWriter
+
 
 class ModelAvatarPoser(ModelBase):
     """Train with pixel loss"""
