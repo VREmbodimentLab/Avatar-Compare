@@ -173,7 +173,6 @@ def main(json_path='options/train_avatarposer.json'):
                     message += '{:s}: {:.3e} '.format(k, v)
                 logger.info(message)
 
-            writer.add_scalar("Loss/train", message['total_loss'].item(), current_step)
             # -------------------------------
             # 5) save model
             # -------------------------------
@@ -241,10 +240,10 @@ def main(json_path='options/train_avatarposer.json'):
                 # testing log
                 logger.info('<epoch:{:3d}, iter:{:8,d}, Average rotational error [degree]: {:<.5f}, Average positional error [cm]: {:<.5f}, Average velocity error [cm/s]: {:<.5f}, Average positional error at hand [cm]: {:<.5f}\n'.format(epoch, current_step,rot_error*57.2958, pos_error*100, vel_error*100, pos_error_hands*100))
 
-
     logger.info('Saving the final model.')
     model.save('latest')
     logger.info('End of training.')
+    writer.add_scalar("Loss/train", message['total_loss'].item(), epoch)
 
 
 if __name__ == '__main__':

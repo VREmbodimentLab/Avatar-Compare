@@ -18562,3 +18562,1504 @@ AvatarPoser(
 23-04-27 13:47:31.338 : <epoch:  9, iter:     750, lr:1.000e-04> total_loss: 1.216e-01 global_orientation_loss: 7.661e-02 joint_rotation_loss: 7.456e-02 joint_position_loss: 4.551e-02 
 23-04-27 13:47:31.929 : Saving the final model.
 23-04-27 13:47:31.977 : End of training.
+23-04-28 14:00:27.815 : testing the sample 0/536
+23-04-28 14:00:29.538 : testing the sample 1/536
+23-04-28 14:00:29.781 : testing the sample 2/536
+23-04-28 14:00:30.458 : testing the sample 3/536
+23-04-28 14:00:30.812 : testing the sample 4/536
+23-04-28 14:00:31.048 : testing the sample 5/536
+23-04-28 14:00:31.329 : testing the sample 6/536
+23-04-28 14:00:31.581 : testing the sample 7/536
+23-04-28 14:00:31.934 : testing the sample 8/536
+23-04-28 14:00:32.340 : testing the sample 9/536
+23-04-28 14:00:32.580 : testing the sample 10/536
+23-04-28 14:00:32.853 : testing the sample 11/536
+23-04-28 14:00:33.201 : testing the sample 12/536
+23-04-28 14:00:33.474 : testing the sample 13/536
+23-04-28 14:00:33.740 : testing the sample 14/536
+23-04-28 14:00:34.341 : testing the sample 15/536
+23-04-28 14:00:34.971 : testing the sample 16/536
+23-04-28 14:00:35.552 : testing the sample 17/536
+23-04-28 14:00:35.966 : testing the sample 18/536
+23-04-28 14:00:36.207 : testing the sample 19/536
+23-04-28 14:00:36.453 : testing the sample 20/536
+23-04-28 14:00:36.693 : testing the sample 21/536
+23-04-28 14:00:37.288 : testing the sample 22/536
+23-04-28 14:00:37.654 : testing the sample 23/536
+23-04-28 14:00:37.952 : testing the sample 24/536
+23-04-28 14:00:38.233 : testing the sample 25/536
+23-04-28 14:00:38.508 : testing the sample 26/536
+23-04-28 14:00:38.757 : testing the sample 27/536
+23-04-28 14:00:39.036 : testing the sample 28/536
+23-04-28 14:00:39.473 : testing the sample 29/536
+23-04-28 14:00:39.827 : testing the sample 30/536
+23-04-28 14:00:40.161 : testing the sample 31/536
+23-04-28 14:00:40.531 : testing the sample 32/536
+23-04-28 14:00:40.867 : testing the sample 33/536
+23-04-28 14:00:41.165 : testing the sample 34/536
+23-04-28 14:00:41.431 : testing the sample 35/536
+23-04-28 14:00:41.868 : testing the sample 36/536
+23-04-28 14:00:42.119 : testing the sample 37/536
+23-04-28 14:00:42.378 : testing the sample 38/536
+23-04-28 14:00:42.830 : testing the sample 39/536
+23-04-28 14:00:43.563 : testing the sample 40/536
+23-04-28 14:00:43.995 : testing the sample 41/536
+23-04-28 14:00:44.738 : testing the sample 42/536
+23-04-28 14:00:45.328 : testing the sample 43/536
+23-04-28 14:00:45.870 : testing the sample 44/536
+23-04-28 14:00:46.257 : testing the sample 45/536
+23-04-28 14:00:46.724 : testing the sample 46/536
+23-04-28 14:00:47.056 : testing the sample 47/536
+23-04-28 14:00:48.115 : testing the sample 48/536
+23-04-28 14:00:49.209 : testing the sample 49/536
+23-04-28 14:00:49.988 : testing the sample 50/536
+23-04-28 14:00:50.725 : testing the sample 51/536
+23-04-28 14:00:51.569 : testing the sample 52/536
+23-04-28 14:00:52.367 : testing the sample 53/536
+23-04-28 14:00:53.186 : testing the sample 54/536
+23-04-28 14:00:53.485 : testing the sample 55/536
+23-04-28 14:00:53.895 : testing the sample 56/536
+23-04-28 14:00:54.285 : testing the sample 57/536
+23-04-28 14:00:54.780 : testing the sample 58/536
+23-04-28 14:00:55.078 : testing the sample 59/536
+23-04-28 14:00:55.395 : testing the sample 60/536
+23-04-28 14:00:55.679 : testing the sample 61/536
+23-04-28 14:00:56.263 : testing the sample 62/536
+23-04-28 14:00:56.539 : testing the sample 63/536
+23-04-28 14:00:56.785 : testing the sample 64/536
+23-04-28 14:00:57.071 : testing the sample 65/536
+23-04-28 14:00:57.442 : testing the sample 66/536
+23-04-28 14:00:57.842 : testing the sample 67/536
+23-04-28 14:00:58.341 : testing the sample 68/536
+23-04-28 14:00:58.724 : testing the sample 69/536
+23-04-28 14:00:59.042 : testing the sample 70/536
+23-04-28 14:00:59.380 : testing the sample 71/536
+23-04-28 14:00:59.895 : testing the sample 72/536
+23-04-28 14:01:00.240 : testing the sample 73/536
+23-04-28 14:01:00.550 : testing the sample 74/536
+23-04-28 14:01:00.887 : testing the sample 75/536
+23-04-28 14:01:01.341 : testing the sample 76/536
+23-04-28 14:01:01.622 : testing the sample 77/536
+23-04-28 14:01:01.895 : testing the sample 78/536
+23-04-28 14:01:02.250 : testing the sample 79/536
+23-04-28 14:01:02.586 : testing the sample 80/536
+23-04-28 14:01:02.970 : testing the sample 81/536
+23-04-28 14:01:03.475 : testing the sample 82/536
+23-04-28 14:01:04.240 : testing the sample 83/536
+23-04-28 14:01:04.581 : testing the sample 84/536
+23-04-28 14:01:04.950 : testing the sample 85/536
+23-04-28 14:01:05.325 : testing the sample 86/536
+23-04-28 14:01:05.735 : testing the sample 87/536
+23-04-28 14:01:06.111 : testing the sample 88/536
+23-04-28 14:01:06.509 : testing the sample 89/536
+23-04-28 14:01:06.776 : testing the sample 90/536
+23-04-28 14:01:07.173 : testing the sample 91/536
+23-04-28 14:01:07.477 : testing the sample 92/536
+23-04-28 14:01:07.764 : testing the sample 93/536
+23-04-28 14:01:08.100 : testing the sample 94/536
+23-04-28 14:01:08.387 : testing the sample 95/536
+23-04-28 14:01:08.793 : testing the sample 96/536
+23-04-28 14:01:09.481 : testing the sample 97/536
+23-04-28 14:01:10.212 : testing the sample 98/536
+23-04-28 14:01:10.646 : testing the sample 99/536
+23-04-28 14:01:10.862 : testing the sample 100/536
+23-04-28 14:01:11.148 : testing the sample 101/536
+23-04-28 14:01:11.506 : testing the sample 102/536
+23-04-28 14:01:11.860 : testing the sample 103/536
+23-04-28 14:01:12.138 : testing the sample 104/536
+23-04-28 14:01:12.488 : testing the sample 105/536
+23-04-28 14:01:12.735 : testing the sample 106/536
+23-04-28 14:01:13.014 : testing the sample 107/536
+23-04-28 14:01:13.273 : testing the sample 108/536
+23-04-28 14:01:13.572 : testing the sample 109/536
+23-04-28 14:01:13.837 : testing the sample 110/536
+23-04-28 14:01:14.740 : testing the sample 111/536
+23-04-28 14:01:15.009 : testing the sample 112/536
+23-04-28 14:01:15.431 : testing the sample 113/536
+23-04-28 14:01:15.729 : testing the sample 114/536
+23-04-28 14:01:16.057 : testing the sample 115/536
+23-04-28 14:01:16.324 : testing the sample 116/536
+23-04-28 14:01:16.722 : testing the sample 117/536
+23-04-28 14:01:17.344 : testing the sample 118/536
+23-04-28 14:01:18.057 : testing the sample 119/536
+23-04-28 14:01:18.415 : testing the sample 120/536
+23-04-28 14:01:18.791 : testing the sample 121/536
+23-04-28 14:01:20.158 : testing the sample 122/536
+23-04-28 14:01:20.468 : testing the sample 123/536
+23-04-28 14:01:20.873 : testing the sample 124/536
+23-04-28 14:01:21.192 : testing the sample 125/536
+23-04-28 14:01:21.513 : testing the sample 126/536
+23-04-28 14:01:21.805 : testing the sample 127/536
+23-04-28 14:01:22.138 : testing the sample 128/536
+23-04-28 14:01:22.427 : testing the sample 129/536
+23-04-28 14:01:22.697 : testing the sample 130/536
+23-04-28 14:01:23.103 : testing the sample 131/536
+23-04-28 14:01:23.422 : testing the sample 132/536
+23-04-28 14:01:23.690 : testing the sample 133/536
+23-04-28 14:39:01.801 : testing the sample 0/536
+23-04-28 14:39:03.425 : testing the sample 1/536
+23-04-28 14:39:03.665 : testing the sample 2/536
+23-04-28 14:39:04.357 : testing the sample 3/536
+23-04-28 14:39:04.698 : testing the sample 4/536
+23-04-28 14:39:04.933 : testing the sample 5/536
+23-04-28 14:39:05.208 : testing the sample 6/536
+23-04-28 14:39:05.453 : testing the sample 7/536
+23-04-28 14:39:05.770 : testing the sample 8/536
+23-04-28 14:39:06.163 : testing the sample 9/536
+23-04-28 14:39:06.398 : testing the sample 10/536
+23-04-28 14:39:06.663 : testing the sample 11/536
+23-04-28 14:39:07.040 : testing the sample 12/536
+23-04-28 14:39:07.328 : testing the sample 13/536
+23-04-28 14:39:07.600 : testing the sample 14/536
+23-04-28 14:39:08.203 : testing the sample 15/536
+23-04-28 14:39:08.808 : testing the sample 16/536
+23-04-28 14:39:09.412 : testing the sample 17/536
+23-04-28 14:39:09.839 : testing the sample 18/536
+23-04-28 14:39:10.080 : testing the sample 19/536
+23-04-28 14:39:10.332 : testing the sample 20/536
+23-04-28 14:39:10.591 : testing the sample 21/536
+23-04-28 14:39:11.206 : testing the sample 22/536
+23-04-28 14:39:11.574 : testing the sample 23/536
+23-04-28 14:39:11.875 : testing the sample 24/536
+23-04-28 14:39:12.145 : testing the sample 25/536
+23-04-28 14:39:12.437 : testing the sample 26/536
+23-04-28 14:39:12.742 : testing the sample 27/536
+23-04-28 14:39:13.028 : testing the sample 28/536
+23-04-28 14:39:13.454 : testing the sample 29/536
+23-04-28 14:39:13.751 : testing the sample 30/536
+23-04-28 14:39:14.076 : testing the sample 31/536
+23-04-28 14:39:14.364 : testing the sample 32/536
+23-04-28 14:39:14.654 : testing the sample 33/536
+23-04-28 14:39:14.914 : testing the sample 34/536
+23-04-28 14:39:15.168 : testing the sample 35/536
+23-04-28 14:39:15.581 : testing the sample 36/536
+23-04-28 14:39:15.820 : testing the sample 37/536
+23-04-28 14:39:16.064 : testing the sample 38/536
+23-04-28 14:39:16.467 : testing the sample 39/536
+23-04-28 14:39:17.151 : testing the sample 40/536
+23-04-28 14:39:17.475 : testing the sample 41/536
+23-04-28 14:39:18.138 : testing the sample 42/536
+23-04-28 14:39:18.715 : testing the sample 43/536
+23-04-28 14:39:19.071 : testing the sample 44/536
+23-04-28 14:39:19.347 : testing the sample 45/536
+23-04-28 14:39:19.696 : testing the sample 46/536
+23-04-28 14:39:19.990 : testing the sample 47/536
+23-04-28 14:39:20.661 : testing the sample 48/536
+23-04-28 14:39:21.474 : testing the sample 49/536
+23-04-28 14:39:21.781 : testing the sample 50/536
+23-04-28 14:39:22.015 : testing the sample 51/536
+23-04-28 14:39:22.347 : testing the sample 52/536
+23-04-28 14:39:22.843 : testing the sample 53/536
+23-04-28 14:39:23.522 : testing the sample 54/536
+23-04-28 14:39:23.810 : testing the sample 55/536
+23-04-28 14:39:24.222 : testing the sample 56/536
+23-04-28 14:39:24.602 : testing the sample 57/536
+23-04-28 14:39:25.068 : testing the sample 58/536
+23-04-28 14:39:25.345 : testing the sample 59/536
+23-04-28 14:39:25.694 : testing the sample 60/536
+23-04-28 14:39:25.978 : testing the sample 61/536
+23-04-28 14:39:26.558 : testing the sample 62/536
+23-04-28 14:39:26.831 : testing the sample 63/536
+23-04-28 14:39:27.077 : testing the sample 64/536
+23-04-28 14:39:27.364 : testing the sample 65/536
+23-04-28 14:39:27.734 : testing the sample 66/536
+23-04-28 14:39:28.083 : testing the sample 67/536
+23-04-28 14:39:28.437 : testing the sample 68/536
+23-04-28 14:39:28.734 : testing the sample 69/536
+23-04-28 14:39:29.005 : testing the sample 70/536
+23-04-28 14:39:29.279 : testing the sample 71/536
+23-04-28 14:39:29.583 : testing the sample 72/536
+23-04-28 14:39:29.849 : testing the sample 73/536
+23-04-28 14:39:30.169 : testing the sample 74/536
+23-04-28 14:39:30.442 : testing the sample 75/536
+23-04-28 14:39:30.834 : testing the sample 76/536
+23-04-28 14:39:31.109 : testing the sample 77/536
+23-04-28 14:39:31.392 : testing the sample 78/536
+23-04-28 14:39:31.795 : testing the sample 79/536
+23-04-28 14:39:32.130 : testing the sample 80/536
+23-04-28 14:39:32.497 : testing the sample 81/536
+23-04-28 14:39:32.869 : testing the sample 82/536
+23-04-28 14:47:23.620 : testing the sample 0/536
+23-04-28 14:47:25.100 : testing the sample 1/536
+23-04-28 14:47:25.357 : testing the sample 2/536
+23-04-28 14:47:26.003 : testing the sample 3/536
+23-04-28 14:47:26.347 : testing the sample 4/536
+23-04-28 14:47:26.579 : testing the sample 5/536
+23-04-28 14:47:26.855 : testing the sample 6/536
+23-04-28 14:47:27.120 : testing the sample 7/536
+23-04-28 14:47:27.486 : testing the sample 8/536
+23-04-28 14:47:27.914 : testing the sample 9/536
+23-04-28 14:47:28.183 : testing the sample 10/536
+23-04-28 14:47:28.510 : testing the sample 11/536
+23-04-28 14:47:28.904 : testing the sample 12/536
+23-04-28 14:47:29.189 : testing the sample 13/536
+23-04-28 14:47:29.442 : testing the sample 14/536
+23-04-28 14:47:30.027 : testing the sample 15/536
+23-04-28 14:47:30.571 : testing the sample 16/536
+23-04-28 14:47:31.121 : testing the sample 17/536
+23-04-28 14:47:31.526 : testing the sample 18/536
+23-04-28 14:47:31.763 : testing the sample 19/536
+23-04-28 14:47:32.006 : testing the sample 20/536
+23-04-28 14:47:32.241 : testing the sample 21/536
+23-04-28 14:47:32.860 : testing the sample 22/536
+23-04-28 14:47:33.232 : testing the sample 23/536
+23-04-28 14:47:33.526 : testing the sample 24/536
+23-04-28 14:47:33.811 : testing the sample 25/536
+23-04-28 14:47:34.127 : testing the sample 26/536
+23-04-28 14:47:34.396 : testing the sample 27/536
+23-04-28 14:47:34.679 : testing the sample 28/536
+23-04-28 14:47:35.129 : testing the sample 29/536
+23-04-28 14:47:35.447 : testing the sample 30/536
+23-04-28 14:47:35.752 : testing the sample 31/536
+23-04-28 14:47:36.028 : testing the sample 32/536
+23-04-28 14:47:36.300 : testing the sample 33/536
+23-04-28 14:47:36.561 : testing the sample 34/536
+23-04-28 14:47:36.824 : testing the sample 35/536
+23-04-28 14:47:37.248 : testing the sample 36/536
+23-04-28 14:47:37.491 : testing the sample 37/536
+23-04-28 14:47:37.734 : testing the sample 38/536
+23-04-28 14:47:38.137 : testing the sample 39/536
+23-04-28 14:47:38.825 : testing the sample 40/536
+23-04-28 14:47:39.155 : testing the sample 41/536
+23-04-28 14:47:39.824 : testing the sample 42/536
+23-04-28 14:47:40.371 : testing the sample 43/536
+23-04-28 14:47:40.732 : testing the sample 44/536
+23-04-28 14:47:41.003 : testing the sample 45/536
+23-04-28 14:47:41.340 : testing the sample 46/536
+23-04-28 14:47:41.609 : testing the sample 47/536
+23-04-28 14:47:42.263 : testing the sample 48/536
+23-04-28 14:47:43.034 : testing the sample 49/536
+23-04-28 14:47:43.326 : testing the sample 50/536
+23-04-28 14:47:43.561 : testing the sample 51/536
+23-04-28 14:47:43.881 : testing the sample 52/536
+23-04-28 14:47:44.392 : testing the sample 53/536
+23-04-28 14:47:45.067 : testing the sample 54/536
+23-04-28 14:47:45.366 : testing the sample 55/536
+23-04-28 14:47:45.786 : testing the sample 56/536
+23-04-28 14:47:46.150 : testing the sample 57/536
+23-04-28 14:47:46.612 : testing the sample 58/536
+23-04-28 14:47:46.891 : testing the sample 59/536
+23-04-28 14:47:47.192 : testing the sample 60/536
+23-04-28 14:47:47.466 : testing the sample 61/536
+23-04-28 14:47:48.011 : testing the sample 62/536
+23-04-28 14:47:48.280 : testing the sample 63/536
+23-04-28 14:47:48.522 : testing the sample 64/536
+23-04-28 14:47:48.793 : testing the sample 65/536
+23-04-28 14:47:49.149 : testing the sample 66/536
+23-04-28 14:47:49.478 : testing the sample 67/536
+23-04-28 14:47:49.824 : testing the sample 68/536
+23-04-28 14:47:50.133 : testing the sample 69/536
+23-04-28 14:47:50.448 : testing the sample 70/536
+23-04-28 14:47:50.723 : testing the sample 71/536
+23-04-28 14:47:51.004 : testing the sample 72/536
+23-04-28 14:47:51.289 : testing the sample 73/536
+23-04-28 14:47:51.573 : testing the sample 74/536
+23-04-28 14:47:51.849 : testing the sample 75/536
+23-04-28 14:47:52.234 : testing the sample 76/536
+23-04-28 14:47:52.504 : testing the sample 77/536
+23-04-28 14:47:52.745 : testing the sample 78/536
+23-04-28 14:47:53.076 : testing the sample 79/536
+23-04-28 14:47:53.412 : testing the sample 80/536
+23-04-28 14:47:53.788 : testing the sample 81/536
+23-04-28 14:47:54.159 : testing the sample 82/536
+23-04-28 14:47:54.767 : testing the sample 83/536
+23-04-28 14:47:55.056 : testing the sample 84/536
+23-04-28 14:47:55.408 : testing the sample 85/536
+23-04-28 14:47:55.716 : testing the sample 86/536
+23-04-28 14:47:56.138 : testing the sample 87/536
+23-04-28 14:47:56.582 : testing the sample 88/536
+23-04-28 15:02:41.954 : testing the sample 0/536
+23-04-28 15:03:14.008 : testing the sample 0/536
+23-04-28 15:03:15.503 : testing the sample 1/536
+23-04-28 15:03:15.783 : testing the sample 2/536
+23-04-28 15:03:16.308 : testing the sample 3/536
+23-04-28 15:03:16.669 : testing the sample 4/536
+23-04-28 15:03:16.913 : testing the sample 5/536
+23-04-28 15:03:17.195 : testing the sample 6/536
+23-04-28 15:03:17.622 : testing the sample 7/536
+23-04-28 15:03:18.194 : testing the sample 8/536
+23-04-28 15:03:18.684 : testing the sample 9/536
+23-04-28 15:03:18.933 : testing the sample 10/536
+23-04-28 15:03:19.176 : testing the sample 11/536
+23-04-28 15:03:19.524 : testing the sample 12/536
+23-04-28 15:03:19.858 : testing the sample 13/536
+23-04-28 15:03:20.170 : testing the sample 14/536
+23-04-28 15:03:20.660 : testing the sample 15/536
+23-04-28 15:03:21.130 : testing the sample 16/536
+23-04-28 15:03:21.595 : testing the sample 17/536
+23-04-28 15:03:21.976 : testing the sample 18/536
+23-04-28 15:03:22.229 : testing the sample 19/536
+23-04-28 15:03:22.457 : testing the sample 20/536
+23-04-28 15:03:22.700 : testing the sample 21/536
+23-04-28 15:03:23.176 : testing the sample 22/536
+23-04-28 15:03:23.523 : testing the sample 23/536
+23-04-28 15:03:23.847 : testing the sample 24/536
+23-04-28 15:03:24.326 : testing the sample 25/536
+23-04-28 15:03:24.748 : testing the sample 26/536
+23-04-28 15:03:25.015 : testing the sample 27/536
+23-04-28 15:03:25.279 : testing the sample 28/536
+23-04-28 15:03:25.644 : testing the sample 29/536
+23-04-28 15:03:25.943 : testing the sample 30/536
+23-04-28 15:03:26.238 : testing the sample 31/536
+23-04-28 15:03:26.488 : testing the sample 32/536
+23-04-28 15:03:26.749 : testing the sample 33/536
+23-04-28 15:03:26.996 : testing the sample 34/536
+23-04-28 15:03:27.243 : testing the sample 35/536
+23-04-28 15:03:27.594 : testing the sample 36/536
+23-04-28 15:03:27.829 : testing the sample 37/536
+23-04-28 15:03:28.063 : testing the sample 38/536
+23-04-28 15:03:28.401 : testing the sample 39/536
+23-04-28 15:03:28.906 : testing the sample 40/536
+23-04-28 15:03:29.200 : testing the sample 41/536
+23-04-28 15:03:29.738 : testing the sample 42/536
+23-04-28 15:03:30.235 : testing the sample 43/536
+23-04-28 15:03:30.605 : testing the sample 44/536
+23-04-28 15:03:30.868 : testing the sample 45/536
+23-04-28 15:03:31.166 : testing the sample 46/536
+23-04-28 15:03:31.422 : testing the sample 47/536
+23-04-28 15:03:31.915 : testing the sample 48/536
+23-04-28 15:03:32.498 : testing the sample 49/536
+23-04-28 15:03:32.771 : testing the sample 50/536
+23-04-28 15:03:33.000 : testing the sample 51/536
+23-04-28 15:03:33.302 : testing the sample 52/536
+23-04-28 15:03:33.709 : testing the sample 53/536
+23-04-28 15:03:34.204 : testing the sample 54/536
+23-04-28 15:03:34.468 : testing the sample 55/536
+23-04-28 15:03:34.793 : testing the sample 56/536
+23-04-28 15:03:35.109 : testing the sample 57/536
+23-04-28 15:03:35.539 : testing the sample 58/536
+23-04-28 15:03:35.844 : testing the sample 59/536
+23-04-28 15:03:36.178 : testing the sample 60/536
+23-04-28 15:03:36.456 : testing the sample 61/536
+23-04-28 15:03:36.883 : testing the sample 62/536
+23-04-28 15:03:37.139 : testing the sample 63/536
+23-04-28 15:03:37.371 : testing the sample 64/536
+23-04-28 15:03:37.628 : testing the sample 65/536
+23-04-28 15:03:37.951 : testing the sample 66/536
+23-04-28 15:03:38.264 : testing the sample 67/536
+23-04-28 15:03:38.568 : testing the sample 68/536
+23-04-28 15:03:38.824 : testing the sample 69/536
+23-04-28 15:03:39.069 : testing the sample 70/536
+23-04-28 15:03:39.306 : testing the sample 71/536
+23-04-28 15:03:39.555 : testing the sample 72/536
+23-04-28 15:03:39.784 : testing the sample 73/536
+23-04-28 15:03:40.030 : testing the sample 74/536
+23-04-28 15:03:40.276 : testing the sample 75/536
+23-04-28 15:03:40.591 : testing the sample 76/536
+23-04-28 15:03:40.844 : testing the sample 77/536
+23-04-28 15:03:41.098 : testing the sample 78/536
+23-04-28 15:03:41.451 : testing the sample 79/536
+23-04-28 15:03:41.794 : testing the sample 80/536
+23-04-28 15:03:42.142 : testing the sample 81/536
+23-04-28 15:03:42.472 : testing the sample 82/536
+23-04-28 15:03:42.945 : testing the sample 83/536
+23-04-28 15:03:43.209 : testing the sample 84/536
+23-04-28 15:03:43.525 : testing the sample 85/536
+23-04-28 15:03:43.781 : testing the sample 86/536
+23-04-28 15:03:44.098 : testing the sample 87/536
+23-04-28 15:03:44.404 : testing the sample 88/536
+23-04-28 15:03:44.723 : testing the sample 89/536
+23-04-28 15:03:44.974 : testing the sample 90/536
+23-04-28 15:03:45.286 : testing the sample 91/536
+23-04-28 15:03:45.550 : testing the sample 92/536
+23-04-28 15:03:45.794 : testing the sample 93/536
+23-04-28 15:03:46.079 : testing the sample 94/536
+23-04-28 15:03:46.330 : testing the sample 95/536
+23-04-28 15:03:46.657 : testing the sample 96/536
+23-04-28 15:03:47.171 : testing the sample 97/536
+23-04-28 15:03:47.752 : testing the sample 98/536
+23-04-28 15:03:48.131 : testing the sample 99/536
+23-04-28 15:03:48.358 : testing the sample 100/536
+23-04-28 15:03:48.653 : testing the sample 101/536
+23-04-28 15:03:48.994 : testing the sample 102/536
+23-04-28 15:03:49.301 : testing the sample 103/536
+23-04-28 15:03:49.567 : testing the sample 104/536
+23-04-28 15:03:49.896 : testing the sample 105/536
+23-04-28 15:03:50.135 : testing the sample 106/536
+23-04-28 15:03:50.397 : testing the sample 107/536
+23-04-28 15:03:50.644 : testing the sample 108/536
+23-04-28 15:03:50.919 : testing the sample 109/536
+23-04-28 15:03:51.204 : testing the sample 110/536
+23-04-28 15:03:51.890 : testing the sample 111/536
+23-04-28 15:03:52.158 : testing the sample 112/536
+23-04-28 15:03:52.561 : testing the sample 113/536
+23-04-28 15:03:52.837 : testing the sample 114/536
+23-04-28 15:03:53.124 : testing the sample 115/536
+23-04-28 15:03:53.388 : testing the sample 116/536
+23-04-28 15:03:53.793 : testing the sample 117/536
+23-04-28 15:03:54.278 : testing the sample 118/536
+23-04-28 15:03:54.822 : testing the sample 119/536
+23-04-28 15:03:55.137 : testing the sample 120/536
+23-04-28 15:03:55.455 : testing the sample 121/536
+23-04-28 15:03:56.425 : testing the sample 122/536
+23-04-28 15:03:56.721 : testing the sample 123/536
+23-04-28 15:03:57.054 : testing the sample 124/536
+23-04-28 15:03:57.303 : testing the sample 125/536
+23-04-28 15:03:57.563 : testing the sample 126/536
+23-04-28 15:03:57.811 : testing the sample 127/536
+23-04-28 15:03:58.104 : testing the sample 128/536
+23-04-28 15:03:58.395 : testing the sample 129/536
+23-04-28 15:03:58.683 : testing the sample 130/536
+23-04-28 15:03:59.046 : testing the sample 131/536
+23-04-28 15:03:59.330 : testing the sample 132/536
+23-04-28 15:03:59.593 : testing the sample 133/536
+23-04-28 15:04:01.392 : testing the sample 134/536
+23-04-28 15:04:01.998 : testing the sample 135/536
+23-04-28 15:04:02.254 : testing the sample 136/536
+23-04-28 15:04:02.569 : testing the sample 137/536
+23-04-28 15:04:02.902 : testing the sample 138/536
+23-04-28 15:04:03.313 : testing the sample 139/536
+23-04-28 15:04:03.677 : testing the sample 140/536
+23-04-28 15:04:04.245 : testing the sample 141/536
+23-04-28 15:04:04.597 : testing the sample 142/536
+23-04-28 15:04:04.869 : testing the sample 143/536
+23-04-28 15:04:05.186 : testing the sample 144/536
+23-04-28 15:04:05.448 : testing the sample 145/536
+23-04-28 15:04:05.769 : testing the sample 146/536
+23-04-28 15:04:06.346 : testing the sample 147/536
+23-04-28 15:04:06.610 : testing the sample 148/536
+23-04-28 15:04:06.915 : testing the sample 149/536
+23-04-28 15:04:07.163 : testing the sample 150/536
+23-04-28 15:04:07.490 : testing the sample 151/536
+23-04-28 15:04:07.910 : testing the sample 152/536
+23-04-28 15:04:08.178 : testing the sample 153/536
+23-04-28 15:04:08.445 : testing the sample 154/536
+23-04-28 15:04:08.713 : testing the sample 155/536
+23-04-28 15:04:09.034 : testing the sample 156/536
+23-04-28 15:04:09.349 : testing the sample 157/536
+23-04-28 15:04:09.620 : testing the sample 158/536
+23-04-28 15:04:09.925 : testing the sample 159/536
+23-04-28 15:04:10.334 : testing the sample 160/536
+23-04-28 15:04:10.737 : testing the sample 161/536
+23-04-28 15:04:11.068 : testing the sample 162/536
+23-04-28 15:04:11.380 : testing the sample 163/536
+23-04-28 15:04:12.588 : testing the sample 164/536
+23-04-28 15:04:12.941 : testing the sample 165/536
+23-04-28 15:04:13.204 : testing the sample 166/536
+23-04-28 15:04:13.434 : testing the sample 167/536
+23-04-28 15:04:13.950 : testing the sample 168/536
+23-04-28 15:04:14.361 : testing the sample 169/536
+23-04-28 15:04:14.764 : testing the sample 170/536
+23-04-28 15:04:15.016 : testing the sample 171/536
+23-04-28 15:04:15.290 : testing the sample 172/536
+23-04-28 15:04:15.664 : testing the sample 173/536
+23-04-28 15:04:15.991 : testing the sample 174/536
+23-04-28 15:04:16.346 : testing the sample 175/536
+23-04-28 15:04:16.715 : testing the sample 176/536
+23-04-28 15:04:16.973 : testing the sample 177/536
+23-04-28 15:04:17.309 : testing the sample 178/536
+23-04-28 15:04:17.694 : testing the sample 179/536
+23-04-28 15:04:18.185 : testing the sample 180/536
+23-04-28 15:04:18.431 : testing the sample 181/536
+23-04-28 15:04:18.686 : testing the sample 182/536
+23-04-28 15:04:19.160 : testing the sample 183/536
+23-04-28 15:04:20.247 : testing the sample 184/536
+23-04-28 15:04:20.637 : testing the sample 185/536
+23-04-28 15:04:21.135 : testing the sample 186/536
+23-04-28 15:04:21.532 : testing the sample 187/536
+23-04-28 15:04:21.855 : testing the sample 188/536
+23-04-28 15:04:22.124 : testing the sample 189/536
+23-04-28 15:04:22.402 : testing the sample 190/536
+23-04-28 15:04:22.741 : testing the sample 191/536
+23-04-28 15:04:23.231 : testing the sample 192/536
+23-04-28 15:04:23.498 : testing the sample 193/536
+23-04-28 15:04:23.814 : testing the sample 194/536
+23-04-28 15:04:24.156 : testing the sample 195/536
+23-04-28 15:04:24.421 : testing the sample 196/536
+23-04-28 15:04:24.652 : testing the sample 197/536
+23-04-28 15:04:25.829 : testing the sample 198/536
+23-04-28 15:04:26.108 : testing the sample 199/536
+23-04-28 15:04:26.566 : testing the sample 200/536
+23-04-28 15:04:26.918 : testing the sample 201/536
+23-04-28 15:04:27.170 : testing the sample 202/536
+23-04-28 15:04:27.428 : testing the sample 203/536
+23-04-28 15:04:27.685 : testing the sample 204/536
+23-04-28 15:04:28.168 : testing the sample 205/536
+23-04-28 15:04:28.525 : testing the sample 206/536
+23-04-28 15:04:28.765 : testing the sample 207/536
+23-04-28 15:04:29.231 : testing the sample 208/536
+23-04-28 15:04:29.667 : testing the sample 209/536
+23-04-28 15:04:29.991 : testing the sample 210/536
+23-04-28 15:04:30.268 : testing the sample 211/536
+23-04-28 15:04:30.563 : testing the sample 212/536
+23-04-28 15:04:30.873 : testing the sample 213/536
+23-04-28 15:04:31.187 : testing the sample 214/536
+23-04-28 15:04:31.450 : testing the sample 215/536
+23-04-28 15:04:31.759 : testing the sample 216/536
+23-04-28 15:04:32.022 : testing the sample 217/536
+23-04-28 15:04:32.532 : testing the sample 218/536
+23-04-28 15:04:33.025 : testing the sample 219/536
+23-04-28 15:04:33.338 : testing the sample 220/536
+23-04-28 15:04:33.904 : testing the sample 221/536
+23-04-28 15:04:34.217 : testing the sample 222/536
+23-04-28 15:04:34.641 : testing the sample 223/536
+23-04-28 15:04:35.113 : testing the sample 224/536
+23-04-28 15:04:35.433 : testing the sample 225/536
+23-04-28 15:04:35.758 : testing the sample 226/536
+23-04-28 15:04:36.327 : testing the sample 227/536
+23-04-28 15:04:36.773 : testing the sample 228/536
+23-04-28 15:04:37.158 : testing the sample 229/536
+23-04-28 15:04:37.515 : testing the sample 230/536
+23-04-28 15:04:37.930 : testing the sample 231/536
+23-04-28 15:04:38.212 : testing the sample 232/536
+23-04-28 15:04:39.683 : testing the sample 233/536
+23-04-28 15:04:40.121 : testing the sample 234/536
+23-04-28 15:04:40.583 : testing the sample 235/536
+23-04-28 15:04:40.845 : testing the sample 236/536
+23-04-28 15:04:41.167 : testing the sample 237/536
+23-04-28 15:04:41.420 : testing the sample 238/536
+23-04-28 15:04:41.737 : testing the sample 239/536
+23-04-28 15:04:41.978 : testing the sample 240/536
+23-04-28 15:04:42.267 : testing the sample 241/536
+23-04-28 15:04:42.597 : testing the sample 242/536
+23-04-28 15:04:43.116 : testing the sample 243/536
+23-04-28 15:04:43.392 : testing the sample 244/536
+23-04-28 15:04:43.670 : testing the sample 245/536
+23-04-28 15:04:44.176 : testing the sample 246/536
+23-04-28 15:04:44.511 : testing the sample 247/536
+23-04-28 15:04:44.773 : testing the sample 248/536
+23-04-28 15:04:45.216 : testing the sample 249/536
+23-04-28 15:04:45.488 : testing the sample 250/536
+23-04-28 15:04:45.811 : testing the sample 251/536
+23-04-28 15:04:46.068 : testing the sample 252/536
+23-04-28 15:04:46.549 : testing the sample 253/536
+23-04-28 15:04:46.797 : testing the sample 254/536
+23-04-28 15:04:47.247 : testing the sample 255/536
+23-04-28 15:04:47.489 : testing the sample 256/536
+23-04-28 15:04:47.971 : testing the sample 257/536
+23-04-28 15:04:48.302 : testing the sample 258/536
+23-04-28 15:04:48.618 : testing the sample 259/536
+23-04-28 15:04:49.130 : testing the sample 260/536
+23-04-28 15:04:49.684 : testing the sample 261/536
+23-04-28 15:04:50.202 : testing the sample 262/536
+23-04-28 15:04:50.446 : testing the sample 263/536
+23-04-28 15:04:50.699 : testing the sample 264/536
+23-04-28 15:04:51.025 : testing the sample 265/536
+23-04-28 15:04:51.733 : testing the sample 266/536
+23-04-28 15:04:51.997 : testing the sample 267/536
+23-04-28 15:04:52.304 : testing the sample 268/536
+23-04-28 15:04:52.549 : testing the sample 269/536
+23-04-28 15:04:53.016 : testing the sample 270/536
+23-04-28 15:04:53.258 : testing the sample 271/536
+23-04-28 15:04:53.558 : testing the sample 272/536
+23-04-28 15:04:53.873 : testing the sample 273/536
+23-04-28 15:04:54.120 : testing the sample 274/536
+23-04-28 15:04:54.415 : testing the sample 275/536
+23-04-28 15:04:54.759 : testing the sample 276/536
+23-04-28 15:04:55.137 : testing the sample 277/536
+23-04-28 15:04:55.473 : testing the sample 278/536
+23-04-28 15:04:55.809 : testing the sample 279/536
+23-04-28 15:04:56.140 : testing the sample 280/536
+23-04-28 15:04:56.395 : testing the sample 281/536
+23-04-28 15:04:56.655 : testing the sample 282/536
+23-04-28 15:04:56.934 : testing the sample 283/536
+23-04-28 15:04:57.197 : testing the sample 284/536
+23-04-28 15:04:57.495 : testing the sample 285/536
+23-04-28 15:04:57.839 : testing the sample 286/536
+23-04-28 15:04:58.189 : testing the sample 287/536
+23-04-28 15:04:58.455 : testing the sample 288/536
+23-04-28 15:04:58.789 : testing the sample 289/536
+23-04-28 15:04:59.252 : testing the sample 290/536
+23-04-28 15:04:59.543 : testing the sample 291/536
+23-04-28 15:05:00.028 : testing the sample 292/536
+23-04-28 15:05:00.318 : testing the sample 293/536
+23-04-28 15:05:00.617 : testing the sample 294/536
+23-04-28 15:05:01.049 : testing the sample 295/536
+23-04-28 15:05:01.492 : testing the sample 296/536
+23-04-28 15:05:01.804 : testing the sample 297/536
+23-04-28 15:05:02.052 : testing the sample 298/536
+23-04-28 15:05:02.559 : testing the sample 299/536
+23-04-28 15:05:03.061 : testing the sample 300/536
+23-04-28 15:05:03.320 : testing the sample 301/536
+23-04-28 15:05:03.635 : testing the sample 302/536
+23-04-28 15:05:03.956 : testing the sample 303/536
+23-04-28 15:05:04.451 : testing the sample 304/536
+23-04-28 15:05:04.704 : testing the sample 305/536
+23-04-28 15:05:04.946 : testing the sample 306/536
+23-04-28 15:05:05.248 : testing the sample 307/536
+23-04-28 15:05:05.929 : testing the sample 308/536
+23-04-28 15:05:06.712 : testing the sample 309/536
+23-04-28 15:05:07.061 : testing the sample 310/536
+23-04-28 15:05:07.410 : testing the sample 311/536
+23-04-28 15:05:07.660 : testing the sample 312/536
+23-04-28 15:05:07.977 : testing the sample 313/536
+23-04-28 15:05:08.347 : testing the sample 314/536
+23-04-28 15:05:08.673 : testing the sample 315/536
+23-04-28 15:05:09.010 : testing the sample 316/536
+23-04-28 15:05:09.276 : testing the sample 317/536
+23-04-28 15:05:09.570 : testing the sample 318/536
+23-04-28 15:05:09.803 : testing the sample 319/536
+23-04-28 15:05:10.361 : testing the sample 320/536
+23-04-28 15:05:10.625 : testing the sample 321/536
+23-04-28 15:05:10.882 : testing the sample 322/536
+23-04-28 15:05:11.149 : testing the sample 323/536
+23-04-28 15:05:11.436 : testing the sample 324/536
+23-04-28 15:05:11.720 : testing the sample 325/536
+23-04-28 15:05:12.042 : testing the sample 326/536
+23-04-28 15:05:12.337 : testing the sample 327/536
+23-04-28 15:05:12.659 : testing the sample 328/536
+23-04-28 15:05:12.901 : testing the sample 329/536
+23-04-28 15:05:13.270 : testing the sample 330/536
+23-04-28 15:05:13.986 : testing the sample 331/536
+23-04-28 15:05:14.411 : testing the sample 332/536
+23-04-28 15:05:14.878 : testing the sample 333/536
+23-04-28 15:05:15.150 : testing the sample 334/536
+23-04-28 15:05:15.400 : testing the sample 335/536
+23-04-28 15:05:15.646 : testing the sample 336/536
+23-04-28 15:05:15.900 : testing the sample 337/536
+23-04-28 15:05:16.175 : testing the sample 338/536
+23-04-28 15:05:16.497 : testing the sample 339/536
+23-04-28 15:05:16.781 : testing the sample 340/536
+23-04-28 15:05:17.093 : testing the sample 341/536
+23-04-28 15:05:17.800 : testing the sample 342/536
+23-04-28 15:05:18.181 : testing the sample 343/536
+23-04-28 15:05:18.493 : testing the sample 344/536
+23-04-28 15:05:18.761 : testing the sample 345/536
+23-04-28 15:05:19.079 : testing the sample 346/536
+23-04-28 15:05:19.385 : testing the sample 347/536
+23-04-28 15:05:19.632 : testing the sample 348/536
+23-04-28 15:05:19.904 : testing the sample 349/536
+23-04-28 15:05:20.185 : testing the sample 350/536
+23-04-28 15:05:20.455 : testing the sample 351/536
+23-04-28 15:05:20.706 : testing the sample 352/536
+23-04-28 15:05:21.054 : testing the sample 353/536
+23-04-28 15:05:21.431 : testing the sample 354/536
+23-04-28 15:05:21.673 : testing the sample 355/536
+23-04-28 15:05:21.932 : testing the sample 356/536
+23-04-28 15:05:22.198 : testing the sample 357/536
+23-04-28 15:05:22.466 : testing the sample 358/536
+23-04-28 15:05:22.705 : testing the sample 359/536
+23-04-28 15:05:22.967 : testing the sample 360/536
+23-04-28 15:05:23.444 : testing the sample 361/536
+23-04-28 15:05:23.956 : testing the sample 362/536
+23-04-28 15:05:24.543 : testing the sample 363/536
+23-04-28 15:05:24.853 : testing the sample 364/536
+23-04-28 15:05:25.225 : testing the sample 365/536
+23-04-28 15:05:25.676 : testing the sample 366/536
+23-04-28 15:05:26.153 : testing the sample 367/536
+23-04-28 15:05:26.558 : testing the sample 368/536
+23-04-28 15:05:26.989 : testing the sample 369/536
+23-04-28 15:05:27.244 : testing the sample 370/536
+23-04-28 15:05:27.489 : testing the sample 371/536
+23-04-28 15:05:27.729 : testing the sample 372/536
+23-04-28 15:05:28.164 : testing the sample 373/536
+23-04-28 15:05:28.507 : testing the sample 374/536
+23-04-28 15:05:28.866 : testing the sample 375/536
+23-04-28 15:05:29.753 : testing the sample 376/536
+23-04-28 15:05:30.371 : testing the sample 377/536
+23-04-28 15:05:31.059 : testing the sample 378/536
+23-04-28 15:05:31.633 : testing the sample 379/536
+23-04-28 15:05:32.160 : testing the sample 380/536
+23-04-28 15:05:32.624 : testing the sample 381/536
+23-04-28 15:05:33.060 : testing the sample 382/536
+23-04-28 15:05:33.344 : testing the sample 383/536
+23-04-28 15:05:34.034 : testing the sample 384/536
+23-04-28 15:05:34.355 : testing the sample 385/536
+23-04-28 15:05:35.427 : testing the sample 386/536
+23-04-28 15:05:35.766 : testing the sample 387/536
+23-04-28 15:05:36.068 : testing the sample 388/536
+23-04-28 15:05:36.536 : testing the sample 389/536
+23-04-28 15:05:37.119 : testing the sample 390/536
+23-04-28 15:05:37.530 : testing the sample 391/536
+23-04-28 15:05:38.114 : testing the sample 392/536
+23-04-28 15:05:38.550 : testing the sample 393/536
+23-04-28 15:05:38.844 : testing the sample 394/536
+23-04-28 15:05:39.222 : testing the sample 395/536
+23-04-28 15:05:39.590 : testing the sample 396/536
+23-04-28 15:05:40.491 : testing the sample 397/536
+23-04-28 15:05:40.924 : testing the sample 398/536
+23-04-28 15:05:41.383 : testing the sample 399/536
+23-04-28 15:05:41.720 : testing the sample 400/536
+23-04-28 15:05:42.105 : testing the sample 401/536
+23-04-28 15:05:42.469 : testing the sample 402/536
+23-04-28 15:05:42.841 : testing the sample 403/536
+23-04-28 15:05:43.357 : testing the sample 404/536
+23-04-28 15:05:43.949 : testing the sample 405/536
+23-04-28 15:05:44.508 : testing the sample 406/536
+23-04-28 15:05:44.845 : testing the sample 407/536
+23-04-28 15:05:45.612 : testing the sample 408/536
+23-04-28 15:05:45.944 : testing the sample 409/536
+23-04-28 15:05:46.275 : testing the sample 410/536
+23-04-28 15:05:47.166 : testing the sample 411/536
+23-04-28 15:05:48.197 : testing the sample 412/536
+23-04-28 15:05:49.462 : testing the sample 413/536
+23-04-28 15:05:49.800 : testing the sample 414/536
+23-04-28 15:05:50.173 : testing the sample 415/536
+23-04-28 15:05:50.473 : testing the sample 416/536
+23-04-28 15:05:50.797 : testing the sample 417/536
+23-04-28 15:05:51.126 : testing the sample 418/536
+23-04-28 15:05:51.521 : testing the sample 419/536
+23-04-28 15:05:51.838 : testing the sample 420/536
+23-04-28 15:05:52.128 : testing the sample 421/536
+23-04-28 15:05:52.401 : testing the sample 422/536
+23-04-28 15:05:52.677 : testing the sample 423/536
+23-04-28 15:05:52.970 : testing the sample 424/536
+23-04-28 15:05:53.262 : testing the sample 425/536
+23-04-28 15:05:53.622 : testing the sample 426/536
+23-04-28 15:05:53.883 : testing the sample 427/536
+23-04-28 15:05:54.182 : testing the sample 428/536
+23-04-28 15:05:54.416 : testing the sample 429/536
+23-04-28 15:05:54.696 : testing the sample 430/536
+23-04-28 15:05:55.541 : testing the sample 431/536
+23-04-28 15:05:55.971 : testing the sample 432/536
+23-04-28 15:05:56.396 : testing the sample 433/536
+23-04-28 15:05:56.664 : testing the sample 434/536
+23-04-28 15:05:56.916 : testing the sample 435/536
+23-04-28 15:05:57.178 : testing the sample 436/536
+23-04-28 15:05:57.416 : testing the sample 437/536
+23-04-28 15:05:57.966 : testing the sample 438/536
+23-04-28 15:05:58.621 : testing the sample 439/536
+23-04-28 15:05:59.224 : testing the sample 440/536
+23-04-28 15:05:59.826 : testing the sample 441/536
+23-04-28 15:06:00.514 : testing the sample 442/536
+23-04-28 15:06:01.163 : testing the sample 443/536
+23-04-28 15:06:01.775 : testing the sample 444/536
+23-04-28 15:06:02.200 : testing the sample 445/536
+23-04-28 15:06:02.661 : testing the sample 446/536
+23-04-28 15:06:03.335 : testing the sample 447/536
+23-04-28 15:06:03.801 : testing the sample 448/536
+23-04-28 15:06:04.150 : testing the sample 449/536
+23-04-28 15:06:04.546 : testing the sample 450/536
+23-04-28 15:06:04.792 : testing the sample 451/536
+23-04-28 15:06:05.041 : testing the sample 452/536
+23-04-28 15:06:05.275 : testing the sample 453/536
+23-04-28 15:06:05.872 : testing the sample 454/536
+23-04-28 15:06:06.450 : testing the sample 455/536
+23-04-28 15:06:07.123 : testing the sample 456/536
+23-04-28 15:06:07.653 : testing the sample 457/536
+23-04-28 15:06:08.032 : testing the sample 458/536
+23-04-28 15:06:08.394 : testing the sample 459/536
+23-04-28 15:06:08.748 : testing the sample 460/536
+23-04-28 15:06:09.141 : testing the sample 461/536
+23-04-28 15:06:09.432 : testing the sample 462/536
+23-04-28 15:06:10.471 : testing the sample 463/536
+23-04-28 15:06:11.121 : testing the sample 464/536
+23-04-28 15:06:11.809 : testing the sample 465/536
+23-04-28 15:06:12.496 : testing the sample 466/536
+23-04-28 15:06:13.065 : testing the sample 467/536
+23-04-28 15:06:13.622 : testing the sample 468/536
+23-04-28 15:06:14.247 : testing the sample 469/536
+23-04-28 15:06:14.823 : testing the sample 470/536
+23-04-28 15:06:15.306 : testing the sample 471/536
+23-04-28 15:06:15.565 : testing the sample 472/536
+23-04-28 15:06:15.882 : testing the sample 473/536
+23-04-28 15:06:16.298 : testing the sample 474/536
+23-04-28 15:06:16.680 : testing the sample 475/536
+23-04-28 15:06:17.175 : testing the sample 476/536
+23-04-28 15:06:17.502 : testing the sample 477/536
+23-04-28 15:06:17.926 : testing the sample 478/536
+23-04-28 15:06:18.259 : testing the sample 479/536
+23-04-28 15:06:18.738 : testing the sample 480/536
+23-04-28 15:06:19.161 : testing the sample 481/536
+23-04-28 15:06:19.581 : testing the sample 482/536
+23-04-28 15:06:19.839 : testing the sample 483/536
+23-04-28 15:06:20.211 : testing the sample 484/536
+23-04-28 15:06:20.617 : testing the sample 485/536
+23-04-28 15:06:21.503 : testing the sample 486/536
+23-04-28 15:06:21.839 : testing the sample 487/536
+23-04-28 15:06:22.339 : testing the sample 488/536
+23-04-28 15:06:22.681 : testing the sample 489/536
+23-04-28 15:06:23.471 : testing the sample 490/536
+23-04-28 15:06:24.460 : testing the sample 491/536
+23-04-28 15:06:25.016 : testing the sample 492/536
+23-04-28 15:06:25.596 : testing the sample 493/536
+23-04-28 15:06:26.482 : testing the sample 494/536
+23-04-28 15:06:27.310 : testing the sample 495/536
+23-04-28 15:06:27.723 : testing the sample 496/536
+23-04-28 15:06:28.112 : testing the sample 497/536
+23-04-28 15:06:28.614 : testing the sample 498/536
+23-04-28 15:06:29.039 : testing the sample 499/536
+23-04-28 15:06:29.551 : testing the sample 500/536
+23-04-28 15:06:30.027 : testing the sample 501/536
+23-04-28 15:06:30.438 : testing the sample 502/536
+23-04-28 15:06:30.832 : testing the sample 503/536
+23-04-28 15:06:31.346 : testing the sample 504/536
+23-04-28 15:06:31.733 : testing the sample 505/536
+23-04-28 15:06:32.206 : testing the sample 506/536
+23-04-28 15:06:32.654 : testing the sample 507/536
+23-04-28 15:06:33.031 : testing the sample 508/536
+23-04-28 15:06:33.438 : testing the sample 509/536
+23-04-28 15:06:33.679 : testing the sample 510/536
+23-04-28 15:06:33.919 : testing the sample 511/536
+23-04-28 15:06:34.412 : testing the sample 512/536
+23-04-28 15:06:34.753 : testing the sample 513/536
+23-04-28 15:06:34.950 : testing the sample 514/536
+23-04-28 15:06:35.397 : testing the sample 515/536
+23-04-28 15:06:36.333 : testing the sample 516/536
+23-04-28 15:06:37.062 : testing the sample 517/536
+23-04-28 15:06:37.487 : testing the sample 518/536
+23-04-28 15:06:38.411 : testing the sample 519/536
+23-04-28 15:06:39.089 : testing the sample 520/536
+23-04-28 15:06:39.766 : testing the sample 521/536
+23-04-28 15:06:40.206 : testing the sample 522/536
+23-04-28 15:06:40.717 : testing the sample 523/536
+23-04-28 15:06:41.208 : testing the sample 524/536
+23-04-28 15:06:42.158 : testing the sample 525/536
+23-04-28 15:06:42.759 : testing the sample 526/536
+23-04-28 15:06:43.533 : testing the sample 527/536
+23-04-28 15:06:44.391 : testing the sample 528/536
+23-04-28 15:06:45.255 : testing the sample 529/536
+23-04-28 15:06:46.103 : testing the sample 530/536
+23-04-28 15:06:47.595 : testing the sample 531/536
+23-04-28 15:06:48.534 : testing the sample 532/536
+23-04-28 15:06:49.213 : testing the sample 533/536
+23-04-28 15:06:49.957 : testing the sample 534/536
+23-04-28 15:06:50.651 : testing the sample 535/536
+23-04-28 15:06:51.577 : Average rotational error [degree]: 35.45856, Average positional error [cm]: 164.55124, Average velocity error [cm/s]: 141.61855, Average positional error at hand [cm]: 148.52325
+
+23-04-28 15:10:59.187 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 10
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-28 15:10:59.195 : Random seed: 2165
+23-04-28 15:10:59.554 : Number of train images: 4,814, iters: 76
+23-04-28 15:11:00.190 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-28 15:11:01.265 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ |  0.000 | -0.126 |  0.141 |  0.038 | torch.Size([256, 54]) || linear_embedding.weight
+ |  0.009 | -0.136 |  0.136 |  0.080 | torch.Size([256]) || linear_embedding.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ | -0.000 | -0.075 |  0.075 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ |  0.000 | -0.079 |  0.086 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ |  0.000 | -0.034 |  0.028 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ |  0.000 | -0.080 |  0.079 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ |  0.000 | -0.085 |  0.083 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ | -0.000 | -0.030 |  0.031 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ |  0.000 | -0.073 |  0.071 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ |  0.000 | -0.082 |  0.082 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ | -0.000 | -0.030 |  0.029 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.012 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ | -0.000 | -0.070 |  0.079 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ |  0.005 | -0.062 |  0.062 |  0.036 | torch.Size([256]) || stabilizer.0.bias
+ |  0.000 | -0.058 |  0.064 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ |  0.004 | -0.038 |  0.058 |  0.045 | torch.Size([6]) || stabilizer.2.bias
+ | -0.000 | -0.078 |  0.071 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ | -0.001 | -0.061 |  0.061 |  0.036 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ | -0.000 | -0.074 |  0.074 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ | -0.002 | -0.061 |  0.062 |  0.036 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-28 15:15:13.309 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 10
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-28 15:15:13.317 : Random seed: 1114
+23-04-28 15:15:13.684 : Number of train images: 4,814, iters: 76
+23-04-28 15:15:14.308 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-28 15:15:15.259 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ | -0.000 | -0.171 |  0.150 |  0.039 | torch.Size([256, 54]) || linear_embedding.weight
+ |  0.007 | -0.136 |  0.135 |  0.077 | torch.Size([256]) || linear_embedding.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ |  0.000 | -0.074 |  0.069 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ |  0.000 | -0.084 |  0.083 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ |  0.000 | -0.062 |  0.062 |  0.035 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ | -0.000 | -0.030 |  0.028 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ | -0.001 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ |  0.000 | -0.074 |  0.073 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ | -0.000 | -0.081 |  0.085 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ |  0.000 | -0.062 |  0.062 |  0.035 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ |  0.000 | -0.028 |  0.033 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ | -0.001 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ | -0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ | -0.000 | -0.084 |  0.078 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ | -0.000 | -0.083 |  0.083 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ |  0.000 | -0.062 |  0.062 |  0.035 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ |  0.000 | -0.029 |  0.032 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ | -0.001 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ |  0.000 | -0.084 |  0.079 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ |  0.002 | -0.062 |  0.062 |  0.035 | torch.Size([256]) || stabilizer.0.bias
+ | -0.001 | -0.066 |  0.057 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ |  0.010 | -0.045 |  0.050 |  0.040 | torch.Size([6]) || stabilizer.2.bias
+ |  0.000 | -0.085 |  0.074 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ | -0.000 | -0.062 |  0.062 |  0.036 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ |  0.000 | -0.075 |  0.078 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ |  0.001 | -0.061 |  0.062 |  0.036 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-28 15:17:31.017 :   task: AvatarPoseEstimation
+  model: avatarposer
+  gpu_ids: [0]
+  merge_bn: True
+  merge_bn_startpoint: 400000
+  path:[
+    root: results
+    pretrained_netG: None
+    task: results\AvatarPoseEstimation
+    log: results\AvatarPoseEstimation
+    options: results\AvatarPoseEstimation\options
+    pretrained: None
+    models: results\AvatarPoseEstimation\models
+    images: results\AvatarPoseEstimation\videos
+  ]
+  support_dir: support_data/
+  datasets:[
+    train:[
+      name: train_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_shuffle: True
+      dataloader_num_workers: 1
+      dataloader_batch_size: 64
+      num_input: 3
+      window_size: 40
+      phase: train
+      scale: 1
+    ]
+    test:[
+      name: test_dataset
+      dataset_type: amass
+      dataroot: /data_fps60/CMU/
+      dataloader_batch_size: 1
+      num_input: 3
+      window_size: 40
+      phase: test
+      scale: 1
+    ]
+  ]
+  netG:[
+    net_type: AvatarPoser
+    num_layer: 3
+    input_dim: 54
+    output_dim: 132
+    embed_dim: 256
+    nhead: 8
+    init_type: kaiming_normal
+    init_bn_type: uniform
+    init_gain: 0.2
+    scale: 1
+  ]
+  train:[
+    G_lossfn_type: l1
+    G_lossfn_weight: 1.0
+    G_optimizer_type: adam
+    G_optimizer_lr: 0.0001
+    G_optimizer_clipgrad: None
+    G_scheduler_type: MultiStepLR
+    G_scheduler_milestones: [60000, 120000, 180000, 240000, 300000, 360000]
+    G_scheduler_gamma: 0.5
+    G_regularizer_orthstep: None
+    G_regularizer_clipstep: None
+    checkpoint_test: 10000
+    checkpoint_save: 10000
+    checkpoint_print: 10
+    F_feature_layer: 34
+    F_weights: 1.0
+    F_lossfn_type: l1
+    F_use_input_norm: True
+    F_use_range_norm: False
+    G_optimizer_reuse: False
+    G_param_strict: True
+    E_param_strict: True
+    E_decay: 0
+  ]
+  opt_path: options/train_avatarposer.json
+  is_train: True
+  scale: 1
+  find_unused_parameters: True
+  dist: False
+  num_gpu: 1
+
+23-04-28 15:17:31.024 : Random seed: 685
+23-04-28 15:17:31.388 : Number of train images: 4,814, iters: 76
+23-04-28 15:17:31.981 : 
+Networks name: AvatarPoser
+Params number: 4124804
+Net structure:
+AvatarPoser(
+  (linear_embedding): Linear(in_features=54, out_features=256, bias=True)
+  (transformer_encoder): TransformerEncoder(
+    (layers): ModuleList(
+      (0): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (1): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+      (2): TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+          (out_proj): NonDynamicallyQuantizableLinear(in_features=256, out_features=256, bias=True)
+        )
+        (linear1): Linear(in_features=256, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=256, bias=True)
+        (norm1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.1, inplace=False)
+        (dropout2): Dropout(p=0.1, inplace=False)
+      )
+    )
+  )
+  (stabilizer): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=6, bias=True)
+  )
+  (joint_rotation_decoder): Sequential(
+    (0): Linear(in_features=256, out_features=256, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=256, out_features=126, bias=True)
+  )
+  (body_model): BodyModel()
+)
+
+23-04-28 15:17:32.911 : 
+ |  mean  |  min   |  max   |  std   || shape               
+ | -0.000 | -0.141 |  0.174 |  0.038 | torch.Size([256, 54]) || linear_embedding.weight
+ | -0.002 | -0.135 |  0.136 |  0.078 | torch.Size([256]) || linear_embedding.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.0.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.0.self_attn.in_proj_bias
+ |  0.000 | -0.074 |  0.073 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.0.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.self_attn.out_proj.bias
+ | -0.000 | -0.088 |  0.081 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.0.linear1.weight
+ |  0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.0.linear1.bias
+ | -0.000 | -0.029 |  0.031 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.0.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.0.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.0.norm2.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.1.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.1.self_attn.in_proj_bias
+ |  0.000 | -0.074 |  0.077 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.1.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.self_attn.out_proj.bias
+ | -0.000 | -0.085 |  0.082 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.1.linear1.weight
+ |  0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.1.linear1.bias
+ | -0.000 | -0.029 |  0.027 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.1.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.1.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.1.norm2.bias
+ |  0.000 | -0.077 |  0.077 |  0.044 | torch.Size([768, 256]) || transformer_encoder.layers.2.self_attn.in_proj_weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([768]) || transformer_encoder.layers.2.self_attn.in_proj_bias
+ | -0.000 | -0.079 |  0.081 |  0.018 | torch.Size([256, 256]) || transformer_encoder.layers.2.self_attn.out_proj.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.self_attn.out_proj.bias
+ | -0.000 | -0.084 |  0.083 |  0.018 | torch.Size([2048, 256]) || transformer_encoder.layers.2.linear1.weight
+ |  0.000 | -0.062 |  0.062 |  0.036 | torch.Size([2048]) || transformer_encoder.layers.2.linear1.bias
+ | -0.000 | -0.028 |  0.027 |  0.006 | torch.Size([256, 2048]) || transformer_encoder.layers.2.linear2.weight
+ |  0.000 | -0.022 |  0.022 |  0.013 | torch.Size([256]) || transformer_encoder.layers.2.linear2.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm1.bias
+ |  1.000 |  1.000 |  1.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.weight
+ |  0.000 |  0.000 |  0.000 |  0.000 | torch.Size([256]) || transformer_encoder.layers.2.norm2.bias
+ |  0.000 | -0.075 |  0.075 |  0.018 | torch.Size([256, 256]) || stabilizer.0.weight
+ |  0.000 | -0.062 |  0.062 |  0.035 | torch.Size([256]) || stabilizer.0.bias
+ |  0.000 | -0.062 |  0.055 |  0.018 | torch.Size([6, 256]) || stabilizer.2.weight
+ | -0.001 | -0.050 |  0.036 |  0.030 | torch.Size([6]) || stabilizer.2.bias
+ | -0.000 | -0.071 |  0.071 |  0.018 | torch.Size([256, 256]) || joint_rotation_decoder.0.weight
+ | -0.001 | -0.061 |  0.062 |  0.037 | torch.Size([256]) || joint_rotation_decoder.0.bias
+ | -0.000 | -0.086 |  0.070 |  0.018 | torch.Size([126, 256]) || joint_rotation_decoder.2.weight
+ | -0.001 | -0.061 |  0.061 |  0.037 | torch.Size([126]) || joint_rotation_decoder.2.bias
+
+23-04-28 15:17:55.185 : <epoch:  0, iter:      10, lr:1.000e-04> total_loss: 7.707e-01 global_orientation_loss: 3.367e-01 joint_rotation_loss: 3.983e-01 joint_position_loss: 3.657e-01 
+23-04-28 15:18:10.936 : <epoch:  0, iter:      20, lr:1.000e-04> total_loss: 6.714e-01 global_orientation_loss: 2.843e-01 joint_rotation_loss: 3.663e-01 joint_position_loss: 2.994e-01 
+23-04-28 15:18:26.874 : <epoch:  0, iter:      30, lr:1.000e-04> total_loss: 4.738e-01 global_orientation_loss: 2.370e-01 joint_rotation_loss: 3.208e-01 joint_position_loss: 1.482e-01 
+23-04-28 15:18:44.334 : <epoch:  0, iter:      40, lr:1.000e-04> total_loss: 3.999e-01 global_orientation_loss: 2.051e-01 joint_rotation_loss: 2.583e-01 joint_position_loss: 1.375e-01 
+23-04-28 15:18:59.827 : <epoch:  0, iter:      50, lr:1.000e-04> total_loss: 3.416e-01 global_orientation_loss: 2.175e-01 joint_rotation_loss: 1.962e-01 joint_position_loss: 1.411e-01 
+23-04-28 15:19:15.220 : <epoch:  0, iter:      60, lr:1.000e-04> total_loss: 2.835e-01 global_orientation_loss: 2.000e-01 joint_rotation_loss: 1.486e-01 joint_position_loss: 1.309e-01 
+23-04-28 15:19:30.841 : <epoch:  0, iter:      70, lr:1.000e-04> total_loss: 2.489e-01 global_orientation_loss: 1.890e-01 joint_rotation_loss: 1.177e-01 joint_position_loss: 1.274e-01 
+23-04-28 15:19:47.247 : <epoch:  1, iter:      80, lr:1.000e-04> total_loss: 2.512e-01 global_orientation_loss: 2.031e-01 joint_rotation_loss: 1.074e-01 joint_position_loss: 1.397e-01 
+23-04-28 15:19:50.720 : <epoch:  1, iter:      90, lr:1.000e-04> total_loss: 2.460e-01 global_orientation_loss: 2.021e-01 joint_rotation_loss: 1.038e-01 joint_position_loss: 1.382e-01 
+23-04-28 15:19:54.315 : <epoch:  1, iter:     100, lr:1.000e-04> total_loss: 2.310e-01 global_orientation_loss: 1.912e-01 joint_rotation_loss: 9.984e-02 joint_position_loss: 1.274e-01 
+23-04-28 15:19:58.566 : <epoch:  1, iter:     110, lr:1.000e-04> total_loss: 2.179e-01 global_orientation_loss: 1.778e-01 joint_rotation_loss: 9.552e-02 joint_position_loss: 1.189e-01 
+23-04-28 15:20:03.767 : <epoch:  1, iter:     120, lr:1.000e-04> total_loss: 2.272e-01 global_orientation_loss: 1.535e-01 joint_rotation_loss: 9.629e-02 joint_position_loss: 1.278e-01 
+23-04-28 15:20:09.955 : <epoch:  1, iter:     130, lr:1.000e-04> total_loss: 2.094e-01 global_orientation_loss: 1.470e-01 joint_rotation_loss: 8.961e-02 joint_position_loss: 1.169e-01 
+23-04-28 15:20:19.487 : <epoch:  1, iter:     140, lr:1.000e-04> total_loss: 2.577e-01 global_orientation_loss: 1.629e-01 joint_rotation_loss: 1.088e-01 joint_position_loss: 1.457e-01 
+23-04-28 15:20:31.053 : <epoch:  1, iter:     150, lr:1.000e-04> total_loss: 2.427e-01 global_orientation_loss: 1.533e-01 joint_rotation_loss: 1.023e-01 joint_position_loss: 1.374e-01 
+23-04-28 15:20:41.436 : <epoch:  2, iter:     160, lr:1.000e-04> total_loss: 2.186e-01 global_orientation_loss: 1.194e-01 joint_rotation_loss: 9.568e-02 joint_position_loss: 1.205e-01 
+23-04-28 15:20:44.251 : <epoch:  2, iter:     170, lr:1.000e-04> total_loss: 2.028e-01 global_orientation_loss: 1.035e-01 joint_rotation_loss: 9.399e-02 joint_position_loss: 1.067e-01 
+23-04-28 15:20:47.795 : <epoch:  2, iter:     180, lr:1.000e-04> total_loss: 2.245e-01 global_orientation_loss: 1.173e-01 joint_rotation_loss: 1.008e-01 joint_position_loss: 1.214e-01 
+23-04-28 15:20:51.921 : <epoch:  2, iter:     190, lr:1.000e-04> total_loss: 2.036e-01 global_orientation_loss: 8.619e-02 joint_rotation_loss: 9.139e-02 joint_position_loss: 1.105e-01 
+23-04-28 15:20:57.560 : <epoch:  2, iter:     200, lr:1.000e-04> total_loss: 1.999e-01 global_orientation_loss: 1.023e-01 joint_rotation_loss: 9.156e-02 joint_position_loss: 1.063e-01 
+23-04-28 15:21:05.230 : <epoch:  2, iter:     210, lr:1.000e-04> total_loss: 2.172e-01 global_orientation_loss: 1.154e-01 joint_rotation_loss: 9.598e-02 joint_position_loss: 1.189e-01 
+23-04-28 15:21:16.459 : <epoch:  2, iter:     220, lr:1.000e-04> total_loss: 1.946e-01 global_orientation_loss: 9.720e-02 joint_rotation_loss: 9.149e-02 joint_position_loss: 1.011e-01 
+23-04-28 15:21:31.855 : <epoch:  3, iter:     230, lr:1.000e-04> total_loss: 2.008e-01 global_orientation_loss: 1.032e-01 joint_rotation_loss: 8.996e-02 joint_position_loss: 1.088e-01 
+23-04-28 15:21:35.257 : <epoch:  3, iter:     240, lr:1.000e-04> total_loss: 2.156e-01 global_orientation_loss: 1.009e-01 joint_rotation_loss: 9.599e-02 joint_position_loss: 1.176e-01 
+23-04-28 15:21:39.643 : <epoch:  3, iter:     250, lr:1.000e-04> total_loss: 1.889e-01 global_orientation_loss: 8.159e-02 joint_rotation_loss: 9.099e-02 joint_position_loss: 9.625e-02 
+23-04-28 15:21:43.960 : <epoch:  3, iter:     260, lr:1.000e-04> total_loss: 1.938e-01 global_orientation_loss: 9.970e-02 joint_rotation_loss: 8.745e-02 joint_position_loss: 1.044e-01 
+23-04-28 15:21:49.785 : <epoch:  3, iter:     270, lr:1.000e-04> total_loss: 1.903e-01 global_orientation_loss: 8.222e-02 joint_rotation_loss: 8.766e-02 joint_position_loss: 1.010e-01 
+23-04-28 15:21:57.317 : <epoch:  3, iter:     280, lr:1.000e-04> total_loss: 1.871e-01 global_orientation_loss: 8.671e-02 joint_rotation_loss: 8.944e-02 joint_position_loss: 9.588e-02 
+23-04-28 15:22:07.915 : <epoch:  3, iter:     290, lr:1.000e-04> total_loss: 1.902e-01 global_orientation_loss: 8.301e-02 joint_rotation_loss: 8.708e-02 joint_position_loss: 1.014e-01 
+23-04-28 15:22:18.851 : <epoch:  3, iter:     300, lr:1.000e-04> total_loss: 1.925e-01 global_orientation_loss: 9.638e-02 joint_rotation_loss: 8.378e-02 joint_position_loss: 1.068e-01 
+23-04-28 15:22:30.474 : <epoch:  4, iter:     310, lr:1.000e-04> total_loss: 1.769e-01 global_orientation_loss: 7.502e-02 joint_rotation_loss: 8.178e-02 joint_position_loss: 9.363e-02 
+23-04-28 15:22:34.067 : <epoch:  4, iter:     320, lr:1.000e-04> total_loss: 1.884e-01 global_orientation_loss: 7.795e-02 joint_rotation_loss: 8.485e-02 joint_position_loss: 1.020e-01 
+23-04-28 15:22:38.364 : <epoch:  4, iter:     330, lr:1.000e-04> total_loss: 1.706e-01 global_orientation_loss: 7.777e-02 joint_rotation_loss: 8.126e-02 joint_position_loss: 8.778e-02 
+23-04-28 15:22:43.422 : <epoch:  4, iter:     340, lr:1.000e-04> total_loss: 1.802e-01 global_orientation_loss: 7.625e-02 joint_rotation_loss: 8.426e-02 joint_position_loss: 9.438e-02 
+23-04-28 15:22:49.333 : <epoch:  4, iter:     350, lr:1.000e-04> total_loss: 1.855e-01 global_orientation_loss: 7.641e-02 joint_rotation_loss: 8.517e-02 joint_position_loss: 9.877e-02 
+23-04-28 15:22:57.946 : <epoch:  4, iter:     360, lr:1.000e-04> total_loss: 1.778e-01 global_orientation_loss: 7.649e-02 joint_rotation_loss: 8.037e-02 joint_position_loss: 9.588e-02 
+23-04-28 15:23:08.828 : <epoch:  4, iter:     370, lr:1.000e-04> total_loss: 1.842e-01 global_orientation_loss: 8.147e-02 joint_rotation_loss: 8.496e-02 joint_position_loss: 9.759e-02 
+23-04-28 15:23:23.543 : <epoch:  5, iter:     380, lr:1.000e-04> total_loss: 1.774e-01 global_orientation_loss: 7.969e-02 joint_rotation_loss: 8.097e-02 joint_position_loss: 9.487e-02 
+23-04-28 15:23:26.850 : <epoch:  5, iter:     390, lr:1.000e-04> total_loss: 2.019e-01 global_orientation_loss: 1.073e-01 joint_rotation_loss: 8.664e-02 joint_position_loss: 1.131e-01 
+23-04-28 15:23:30.040 : <epoch:  5, iter:     400, lr:1.000e-04> total_loss: 1.816e-01 global_orientation_loss: 7.494e-02 joint_rotation_loss: 8.192e-02 joint_position_loss: 9.823e-02 
+23-04-28 15:23:34.702 : <epoch:  5, iter:     410, lr:1.000e-04> total_loss: 1.647e-01 global_orientation_loss: 7.653e-02 joint_rotation_loss: 7.705e-02 joint_position_loss: 8.608e-02 
+23-04-28 15:23:39.793 : <epoch:  5, iter:     420, lr:1.000e-04> total_loss: 1.791e-01 global_orientation_loss: 8.151e-02 joint_rotation_loss: 7.762e-02 joint_position_loss: 9.984e-02 
+23-04-28 15:23:46.816 : <epoch:  5, iter:     430, lr:1.000e-04> total_loss: 1.840e-01 global_orientation_loss: 9.527e-02 joint_rotation_loss: 8.347e-02 joint_position_loss: 9.864e-02 
+23-04-28 15:23:57.031 : <epoch:  5, iter:     440, lr:1.000e-04> total_loss: 1.699e-01 global_orientation_loss: 7.264e-02 joint_rotation_loss: 8.179e-02 joint_position_loss: 8.662e-02 
+23-04-28 15:24:08.237 : <epoch:  5, iter:     450, lr:1.000e-04> total_loss: 1.765e-01 global_orientation_loss: 8.336e-02 joint_rotation_loss: 8.007e-02 joint_position_loss: 9.480e-02 
+23-04-28 15:24:19.111 : <epoch:  6, iter:     460, lr:1.000e-04> total_loss: 1.816e-01 global_orientation_loss: 7.808e-02 joint_rotation_loss: 8.253e-02 joint_position_loss: 9.754e-02 
+23-04-28 15:24:22.713 : <epoch:  6, iter:     470, lr:1.000e-04> total_loss: 1.615e-01 global_orientation_loss: 6.750e-02 joint_rotation_loss: 7.441e-02 joint_position_loss: 8.572e-02 
+23-04-28 15:24:26.426 : <epoch:  6, iter:     480, lr:1.000e-04> total_loss: 1.711e-01 global_orientation_loss: 7.444e-02 joint_rotation_loss: 7.957e-02 joint_position_loss: 9.007e-02 
+23-04-28 15:24:30.848 : <epoch:  6, iter:     490, lr:1.000e-04> total_loss: 1.667e-01 global_orientation_loss: 7.173e-02 joint_rotation_loss: 7.771e-02 joint_position_loss: 8.753e-02 
+23-04-28 15:24:36.746 : <epoch:  6, iter:     500, lr:1.000e-04> total_loss: 1.789e-01 global_orientation_loss: 8.368e-02 joint_rotation_loss: 8.161e-02 joint_position_loss: 9.566e-02 
+23-04-28 15:24:44.888 : <epoch:  6, iter:     510, lr:1.000e-04> total_loss: 1.830e-01 global_orientation_loss: 8.550e-02 joint_rotation_loss: 8.187e-02 joint_position_loss: 9.943e-02 
+23-04-28 15:24:56.533 : <epoch:  6, iter:     520, lr:1.000e-04> total_loss: 1.810e-01 global_orientation_loss: 8.400e-02 joint_rotation_loss: 8.215e-02 joint_position_loss: 9.718e-02 
+23-04-28 15:25:11.767 : <epoch:  7, iter:     530, lr:1.000e-04> total_loss: 1.646e-01 global_orientation_loss: 7.571e-02 joint_rotation_loss: 7.688e-02 joint_position_loss: 8.625e-02 
+23-04-28 15:25:14.927 : <epoch:  7, iter:     540, lr:1.000e-04> total_loss: 1.785e-01 global_orientation_loss: 8.134e-02 joint_rotation_loss: 8.046e-02 joint_position_loss: 9.644e-02 
+23-04-28 15:25:18.838 : <epoch:  7, iter:     550, lr:1.000e-04> total_loss: 1.789e-01 global_orientation_loss: 8.561e-02 joint_rotation_loss: 7.919e-02 joint_position_loss: 9.801e-02 
+23-04-28 15:25:23.963 : <epoch:  7, iter:     560, lr:1.000e-04> total_loss: 1.498e-01 global_orientation_loss: 6.199e-02 joint_rotation_loss: 7.132e-02 joint_position_loss: 7.726e-02 
+23-04-28 15:25:30.259 : <epoch:  7, iter:     570, lr:1.000e-04> total_loss: 1.663e-01 global_orientation_loss: 7.244e-02 joint_rotation_loss: 7.506e-02 joint_position_loss: 8.980e-02 
+23-04-28 15:25:37.092 : <epoch:  7, iter:     580, lr:1.000e-04> total_loss: 1.824e-01 global_orientation_loss: 7.882e-02 joint_rotation_loss: 8.101e-02 joint_position_loss: 9.979e-02 
+23-04-28 15:25:46.661 : <epoch:  7, iter:     590, lr:1.000e-04> total_loss: 1.671e-01 global_orientation_loss: 7.621e-02 joint_rotation_loss: 7.546e-02 joint_position_loss: 9.008e-02 
+23-04-28 15:25:58.565 : <epoch:  7, iter:     600, lr:1.000e-04> total_loss: 1.793e-01 global_orientation_loss: 8.191e-02 joint_rotation_loss: 8.098e-02 joint_position_loss: 9.669e-02 
+23-04-28 15:26:10.380 : <epoch:  8, iter:     610, lr:1.000e-04> total_loss: 1.637e-01 global_orientation_loss: 7.665e-02 joint_rotation_loss: 7.563e-02 joint_position_loss: 8.657e-02 
+23-04-28 15:26:13.968 : <epoch:  8, iter:     620, lr:1.000e-04> total_loss: 1.624e-01 global_orientation_loss: 7.010e-02 joint_rotation_loss: 7.546e-02 joint_position_loss: 8.557e-02 
+23-04-28 15:26:17.298 : <epoch:  8, iter:     630, lr:1.000e-04> total_loss: 1.700e-01 global_orientation_loss: 7.210e-02 joint_rotation_loss: 7.445e-02 joint_position_loss: 9.408e-02 
+23-04-28 15:26:21.668 : <epoch:  8, iter:     640, lr:1.000e-04> total_loss: 1.595e-01 global_orientation_loss: 7.615e-02 joint_rotation_loss: 7.290e-02 joint_position_loss: 8.503e-02 
+23-04-28 15:26:26.811 : <epoch:  8, iter:     650, lr:1.000e-04> total_loss: 1.792e-01 global_orientation_loss: 8.958e-02 joint_rotation_loss: 7.803e-02 joint_position_loss: 9.939e-02 
+23-04-28 15:26:34.133 : <epoch:  8, iter:     660, lr:1.000e-04> total_loss: 1.522e-01 global_orientation_loss: 6.618e-02 joint_rotation_loss: 7.118e-02 joint_position_loss: 7.966e-02 
+23-04-28 15:26:44.432 : <epoch:  8, iter:     670, lr:1.000e-04> total_loss: 1.578e-01 global_orientation_loss: 7.279e-02 joint_rotation_loss: 7.196e-02 joint_position_loss: 8.435e-02 
+23-04-28 15:26:59.436 : <epoch:  9, iter:     680, lr:1.000e-04> total_loss: 1.663e-01 global_orientation_loss: 8.295e-02 joint_rotation_loss: 7.328e-02 joint_position_loss: 9.139e-02 
+23-04-28 15:27:02.564 : <epoch:  9, iter:     690, lr:1.000e-04> total_loss: 1.564e-01 global_orientation_loss: 6.825e-02 joint_rotation_loss: 7.197e-02 joint_position_loss: 8.306e-02 
+23-04-28 15:27:05.575 : <epoch:  9, iter:     700, lr:1.000e-04> total_loss: 1.575e-01 global_orientation_loss: 6.726e-02 joint_rotation_loss: 7.462e-02 joint_position_loss: 8.155e-02 
+23-04-28 15:27:09.121 : <epoch:  9, iter:     710, lr:1.000e-04> total_loss: 1.528e-01 global_orientation_loss: 6.250e-02 joint_rotation_loss: 7.365e-02 joint_position_loss: 7.795e-02 
+23-04-28 15:27:13.225 : <epoch:  9, iter:     720, lr:1.000e-04> total_loss: 1.650e-01 global_orientation_loss: 6.917e-02 joint_rotation_loss: 7.539e-02 joint_position_loss: 8.822e-02 
+23-04-28 15:27:18.994 : <epoch:  9, iter:     730, lr:1.000e-04> total_loss: 1.721e-01 global_orientation_loss: 8.276e-02 joint_rotation_loss: 7.925e-02 joint_position_loss: 9.121e-02 
+23-04-28 15:27:28.036 : <epoch:  9, iter:     740, lr:1.000e-04> total_loss: 1.573e-01 global_orientation_loss: 6.644e-02 joint_rotation_loss: 7.353e-02 joint_position_loss: 8.243e-02 
+23-04-28 15:27:39.251 : <epoch:  9, iter:     750, lr:1.000e-04> total_loss: 1.367e-01 global_orientation_loss: 6.009e-02 joint_rotation_loss: 6.587e-02 joint_position_loss: 6.959e-02 
+23-04-28 15:27:39.764 : Saving the final model.
+23-04-28 15:27:39.790 : End of training.

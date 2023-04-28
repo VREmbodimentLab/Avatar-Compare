@@ -37,8 +37,13 @@ class AvatarPoser(nn.Module):
 
         global_orientation = utils_transform.sixd2aa(global_orientation.reshape(-1,6)).reshape(global_orientation.shape[0],-1).float()
         joint_rotation = utils_transform.sixd2aa(joint_rotation.reshape(-1,6)).reshape(joint_rotation.shape[0],-1).float()
-        body_pose = body_model(**{'pose_body':joint_rotation, 'root_orient':global_orientation})
-        joint_position = body_pose.Jtr
+        
+        # pvrevious code
+        #body_pose = body_model(**{'pose_body':joint_rotation, 'root_orient':global_orientation})
+        #joint_position = body_pose.Jtr
+
+        joint_position = fk_engine.from_aa(torch.cat([global_orientation, joint_rotation], dim=1))
+
 
         return joint_position
 

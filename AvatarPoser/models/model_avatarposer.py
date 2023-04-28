@@ -20,6 +20,7 @@ from utils.torch_fk import SMPLHForwardKinematics,Rotation
 
 from torch.utils.tensorboard import SummaryWriter
 
+fk_engine = SMPLHForwardKinematics()
 
 class ModelAvatarPoser(ModelBase):
     """Train with pixel loss"""
@@ -173,7 +174,7 @@ class ModelAvatarPoser(ModelBase):
         global_orientation_loss = self.G_lossfn(self.E_global_orientation, self.H_global_orientation)
         joint_rotation_loss = self.G_lossfn(self.E_joint_rotation, self.H_joint_rotation)
         joint_position_loss = self.G_lossfn(self.E_joint_position, self.H_joint_position) 
-        loss =  0.02*global_orientation_loss + joint_rotation_loss + joint_position_loss
+        loss =  0.05*global_orientation_loss + joint_rotation_loss + joint_position_loss
         loss.backward()
 
 
@@ -282,7 +283,7 @@ class ModelAvatarPoser(ModelBase):
             self.E = torch.cat([E_global_orientation_tensor, E_joint_rotation_tensor],dim=-1).to(self.device)   
 
             predicted_angle = utils_transform.sixd2aa(self.E[:,:132].reshape(-1,6).detach()).reshape(self.E[:,:132].shape[0],-1).float()
-
+            #print(predicted_angle.shape)
             # Calculate global translation
 
             T_head2world = self.Head_trans_global.clone()
@@ -302,24 +303,31 @@ class ModelAvatarPoser(ModelBase):
             T_head2root_pred[:,:3,3] = head2root_translation
             t_head2world = T_head2world[:,:3,3].clone()
             T_head2world[:,:3,3] = 0
-            T_root2world_pred = torch.matmul(T_head2world, torch.inverse(T_head2root_pred))
+            #T_root2world_pred = torch.matmul(T_head2world, torch.inverse(T_head2root_pred))
 
-            rotation_root2world_pred = matrot2aa(T_root2world_pred[:,:3,:3])
-            translation_root2world_pred = T_root2world_pred[:,:3,3]
+            #rotation_root2world_pred = matrot2aa(T_root2world_pred[:,:3,:3])
+            #translation_root2world_pred = T_root2world_pred[:,:3,3]
+
             #here
-            body_pose_local=self.bm(**{'pose_body':predicted_angle[...,3:66], 'root_orient':predicted_angle[...,:3]})
-            position_global_full_local = body_pose_local.Jtr[:,:22,:]
+            # body_pose_local=self.bm(**{'pose_body':predicted_angle[...,3:66], 'root_orient':predicted_angle[...,:3]})
+            # position_global_full_local = body_pose_local.Jtr[:,:22,:]
+            position_global_full_local = fk_engine.from_aa(predicted_angle)
 
             t_head2root = position_global_full_local[:,15,:]
             t_root2world = -t_head2root+t_head2world.cuda()
+            #print(t_root2world.shape) # (frame , 3)
+            t_root2wrold_expand = t_root2world.expand(22, t_root2world.shape[0], t_root2world.shape[1]).permute(1,0,2)
+            #print(t_root2wrold_repeat.shape)
+
 
             #here
-            self.predicted_body=self.bm(**{'pose_body':predicted_angle[...,3:66], 'root_orient':predicted_angle[...,:3], 'trans': t_root2world}) 
+            #self.predicted_body=self.bm(**{'pose_body':predicted_angle[...,3:66], 'root_orient':predicted_angle[...,:3], 'trans': t_root2world}) 
+            self.predicted_body = fk_engine.from_aa(predicted_angle) + t_root2wrold_expand
             # No stabilizer: 'root_orient':rotation_root2world_pred.cuda()
 
             #print(self.predicted_body)
             #here
-            self.predicted_position = self.predicted_body.Jtr[:,:22,:]  
+            self.predicted_position = self.predicted_body
             
             self.predicted_angle = predicted_angle
             self.predicted_translation = t_root2world
@@ -332,8 +340,11 @@ class ModelAvatarPoser(ModelBase):
                 body_parms[k] = body_parms[k][-predicted_angle.shape[0]:,...]
 
             #here
-            self.gt_body=self.bm(**{k:v for k,v in body_parms.items() if k in ['pose_body','trans', 'root_orient']})
-            self.gt_position = self.gt_body.Jtr[:,:22,:]
+            #self.gt_body=self.bm(**{k:v for k,v in body_parms.items() if k in ['pose_body','trans', 'root_orient']})
+            gt_rot_aa = torch.cat([body_parms['root_orient'], body_parms['pose_body']], dim = 1).reshape(-1,66)
+            gt_trans_expand = body_parms['trans'].expand(22, body_parms['trans'].shape[0], body_parms['trans'].shape[1]).permute(1,0,2)
+            self.gt_body = fk_engine.from_aa(gt_rot_aa) + gt_trans_expand
+            self.gt_position = self.gt_body
 
             self.gt_local_angle = body_parms['pose_body']
             self.gt_global_translation = body_parms['trans']

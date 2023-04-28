@@ -131,7 +131,7 @@ def main(json_path='options/test_avatarposer.json'):
         body_parms_gt = model.current_gt()
         predicted_angle = body_parms_pred['pose_body']
         predicted_position = body_parms_pred['position']
-        print(predicted_position.shape)
+        #print(predicted_position.shape)
         predicted_body = body_parms_pred['body']
         predicted_global_rotation = body_parms_pred['pred_glob_rot']
         predicted_trans = body_parms_pred['trans']
