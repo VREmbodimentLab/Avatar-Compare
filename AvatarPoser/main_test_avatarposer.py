@@ -133,7 +133,7 @@ def main(json_path='options/test_avatarposer.json'):
         predicted_position = body_parms_pred['position']
         #print(predicted_position.shape)
         predicted_body = body_parms_pred['body']
-        predicted_global_rotation = body_parms_pred['pred_glob_rot']
+        #predicted_global_rotation = body_parms_pred['pred_glob_rot']
         predicted_trans = body_parms_pred['trans']
 
         #print(predicted_trans.shape)
@@ -141,7 +141,7 @@ def main(json_path='options/test_avatarposer.json'):
         gt_angle = body_parms_gt['pose_body']
         gt_position = body_parms_gt['position']
         gt_body = body_parms_gt['body']
-        gt_global_rotation = body_parms_gt['gt_glob_rot']
+#        gt_global_rotation = body_parms_gt['gt_glob_rot']
 
         predicted_root_angle = body_parms_pred['root_orient']
         gt_root_angle = body_parms_gt['root_orient']
@@ -165,17 +165,17 @@ def main(json_path='options/test_avatarposer.json'):
 
         predicted_global_rotation_to_aa = []
 
-        for i in range(len(predicted_global_rotation[0,:,0,0])):
-            predicted_global_rotation_to_aa.append(matrot2aa(predicted_global_rotation[:,i,:,:]))
+       # for i in range(len(predicted_global_rotation[0,:,0,0])):
+       #     predicted_global_rotation_to_aa.append(matrot2aa(predicted_global_rotation[:,i,:,:]))
 
-        predicted_global_rotation_to_aa = torch.cat(predicted_global_rotation_to_aa, dim=1)
+#        predicted_global_rotation_to_aa = torch.cat(predicted_global_rotation_to_aa, dim=1)
 
         gt_global_rotation_to_aa = []
 
-        for i in range(len(gt_global_rotation[0,:,0,0])):
-            gt_global_rotation_to_aa.append(matrot2aa(gt_global_rotation[:,i,:,:]))
+     #   for i in range(len(gt_global_rotation[0,:,0,0])):
+     #       gt_global_rotation_to_aa.append(matrot2aa(gt_global_rotation[:,i,:,:]))
 
-        gt_global_rotation_to_aa = torch.cat(gt_global_rotation_to_aa, dim = 1)
+#        gt_global_rotation_to_aa = torch.cat(gt_global_rotation_to_aa, dim = 1)
         
         #root_rot_error_ = torch.matmul(gt_root_angle_to_mat,torch.transpose(predicted_angle_to_mat,1,2))
         #root_rot_error_ = torch.mean((torch.linalg.norm(matrot2aa(root_rot_error_), axis = 1)))
@@ -184,18 +184,18 @@ def main(json_path='options/test_avatarposer.json'):
         # Upper arm : 16, 17 upper leg : 1, 2
 
         ###############
-        upperarm_predicted_global_rotation_to_aa = predicted_global_rotation_to_aa[:,48:54]
-        upperleg_predicted_global_rotation_to_aa = predicted_global_rotation_to_aa[:,3:9]
-        sip_predicted_global_rotation_to_aa = torch.cat((upperleg_predicted_global_rotation_to_aa,upperarm_predicted_global_rotation_to_aa),dim=1)
-        sip_predicted_global_rotmat = aa2matrot(sip_predicted_global_rotation_to_aa.reshape(-1, 3))
+#        upperarm_predicted_global_rotation_to_aa = predicted_global_rotation_to_aa[:,48:54]
+ #       upperleg_predicted_global_rotation_to_aa = predicted_global_rotation_to_aa[:,3:9]
+  #      sip_predicted_global_rotation_to_aa = torch.cat((upperleg_predicted_global_rotation_to_aa,upperarm_predicted_global_rotation_to_aa),dim=1)
+  #      sip_predicted_global_rotmat = aa2matrot(sip_predicted_global_rotation_to_aa.reshape(-1, 3))
         
-        upperarm_gt_global_rotation_to_aa = gt_global_rotation_to_aa[:,48:54]
-        upperleg_gt_global_rotation_to_aa = gt_global_rotation_to_aa[:,3:9]
-        sip_gt_global_rotation_to_aa = torch.cat((upperleg_gt_global_rotation_to_aa, upperarm_gt_global_rotation_to_aa),dim=1)
-        sip_gt_global_rotmat = aa2matrot(sip_gt_global_rotation_to_aa.reshape(-1, 3))
+#        upperarm_gt_global_rotation_to_aa = gt_global_rotation_to_aa[:,48:54]
+#        upperleg_gt_global_rotation_to_aa = gt_global_rotation_to_aa[:,3:9]
+  #      sip_gt_global_rotation_to_aa = torch.cat((upperleg_gt_global_rotation_to_aa, upperarm_gt_global_rotation_to_aa),dim=1)
+ #       sip_gt_global_rotmat = aa2matrot(sip_gt_global_rotation_to_aa.reshape(-1, 3))
 
-        sip_global_ = torch.matmul(sip_gt_global_rotmat, torch.transpose(sip_predicted_global_rotmat,1,2))
-        sip_global_ = torch.mean((torch.linalg.norm(matrot2aa(sip_global_), axis=1)))
+   #     sip_global_ = torch.matmul(sip_gt_global_rotmat, torch.transpose(sip_predicted_global_rotmat,1,2))
+    #    sip_global_ = torch.mean((torch.linalg.norm(matrot2aa(sip_global_), axis=1)))
 
         predicted_position = predicted_position#.cpu().numpy()
         gt_position = gt_position#.cpu().numpy()
@@ -214,7 +214,7 @@ def main(json_path='options/test_avatarposer.json'):
         pelv_mse_ = torch.mean(torch.sqrt(torch.sum(torch.square(gt_pelvis - pd_pelvis),axis = 1)))
 
 
-        mpjre_global_ = torch.mean(torch.absolute(gt_global_rotation_to_aa-predicted_global_rotation_to_aa))
+#        mpjre_global_ = torch.mean(torch.absolute(gt_global_rotation_to_aa-predicted_global_rotation_to_aa))
         #sip_global_ = torch.mean(torch.absolute(sip_predicted_global_rotation_to_aa - sip_gt_global_rotation_to_aa))
 
         #rot_error_ = torch.mean(torch.absolute(gt_angle-predicted_angle))
@@ -226,14 +226,14 @@ def main(json_path='options/test_avatarposer.json'):
         predicted_velocity = (predicted_position[1:,...] - predicted_position[:-1,...])*60
         vel_error_ = torch.mean(torch.sqrt(torch.sum(torch.square(gt_velocity-predicted_velocity),axis=-1)))
 
-        mpjre_global.append(mpjre_global_)
+#        mpjre_global.append(mpjre_global_)
         pelv_error.append(pelv_mae_)
         rot_error.append(rot_error_)
         pos_error.append(pos_error_)
         vel_error.append(vel_error_)
         pelv_rmse_error.append(pelv_mse_)
         root_rot_error.append(root_rot_error_)
-        sip_global.append(sip_global_)
+   #     sip_global.append(sip_global_)
 
         pos_error_hands.append(pos_error_hands_)
 
@@ -245,16 +245,16 @@ def main(json_path='options/test_avatarposer.json'):
     vel_error = sum(vel_error)/len(vel_error)
     pos_error_hands = sum(pos_error_hands)/len(pos_error_hands)
     root_rot_error = sum(root_rot_error) / len(root_rot_error)
-    mpjre_global = sum(mpjre_global) / len(mpjre_global)
-    sip_global = sum(sip_global) / len(sip_global)
+ #   mpjre_global = sum(mpjre_global) / len(mpjre_global)
+ #   sip_global = sum(sip_global) / len(sip_global)
 
     # testing log
     logger.info('Average rotational error [degree]: {:<.5f}, Average positional error [cm]: {:<.5f}, Average velocity error [cm/s]: {:<.5f}, Average positional error at hand [cm]: {:<.5f}\n'.format(rot_error*57.2958, pos_error*100, vel_error*100, pos_error_hands*100))
     #print("pelv_mae is:{:.3f}".format(pelv_mae*100))
 
     print("pelv_rot_error is: {:<.5f}".format(root_rot_error * 57.2958))
-    print("global mpjre error is : {:<.5f}".format(mpjre_global*57.2958))
-    print(sip_global*57.2958)
+    #print("global mpjre error is : {:<.5f}".format(mpjre_global*57.2958))
+ # print(sip_global*57.2958)
 
     #print()
 if __name__ == '__main__':

@@ -283,26 +283,28 @@ class ModelAvatarPoser(ModelBase):
             self.E = torch.cat([E_global_orientation_tensor, E_joint_rotation_tensor],dim=-1).to(self.device)   
 
             predicted_angle = utils_transform.sixd2aa(self.E[:,:132].reshape(-1,6).detach()).reshape(self.E[:,:132].shape[0],-1).float()
-            #print(predicted_angle.shape)
+            print(predicted_angle.shape)
             # Calculate global translation
 
             T_head2world = self.Head_trans_global.clone()
-            T_head2root_pred = torch.eye(4).repeat(T_head2world.shape[0],1,1).cuda()
+            #T_head2root_pred = torch.eye(4).repeat(T_head2world.shape[0],1,1).cuda()
 
             #로컬에서 글로벌로 바꿔준다
             rotation_local_matrot = aa2matrot(torch.cat([torch.zeros([predicted_angle.shape[0],3]).cuda(),predicted_angle[...,3:66]],dim=1).reshape(-1,3)).reshape(predicted_angle.shape[0],-1,9)
             rotation_global_matrot = local2global_pose(rotation_local_matrot, self.bm.kintree_table[0][:22].long())
             
-            head2root_rotation = rotation_global_matrot[:,15,:]
+            #head2root_rotation = rotation_global_matrot[:,15,:]
 
             #here
-            body_pose_local_pred=self.bm(**{'pose_body':predicted_angle[...,3:66]})
-            head2root_translation = body_pose_local_pred.Jtr[:,15,:]
+            #body_pose_local_pred=self.bm(**{'pose_body':predicted_angle[...,3:66]})
+            #head2root_translation = body_pose_local_pred.Jtr[:,15,:]
 
-            T_head2root_pred[:,:3,:3] = head2root_rotation
-            T_head2root_pred[:,:3,3] = head2root_translation
+            #T_head2root_pred[:,:3,:3] = head2root_rotation
+            #T_head2root_pred[:,:3,3] = head2root_translation
+
             t_head2world = T_head2world[:,:3,3].clone()
             T_head2world[:,:3,3] = 0
+
             #T_root2world_pred = torch.matmul(T_head2world, torch.inverse(T_head2root_pred))
 
             #rotation_root2world_pred = matrot2aa(T_root2world_pred[:,:3,:3])
@@ -315,23 +317,26 @@ class ModelAvatarPoser(ModelBase):
 
             t_head2root = position_global_full_local[:,15,:]
             t_root2world = -t_head2root+t_head2world.cuda()
-            #print(t_root2world.shape) # (frame , 3)
+            # 여기까진 ㄱㅊ (Frame, 3)
+
+
+            # 여기서 
             t_root2wrold_expand = t_root2world.expand(22, t_root2world.shape[0], t_root2world.shape[1]).permute(1,0,2)
-            #print(t_root2wrold_repeat.shape)
+            #print(t_root2wrold_expand)
 
 
-            #here
+            #hepyt
             #self.predicted_body=self.bm(**{'pose_body':predicted_angle[...,3:66], 'root_orient':predicted_angle[...,:3], 'trans': t_root2world}) 
-            self.predicted_body = fk_engine.from_aa(predicted_angle) + t_root2wrold_expand
+            self.predicted_body = fk_engine.from_aa(predicted_angle) #+ t_root2wrold_expand
             # No stabilizer: 'root_orient':rotation_root2world_pred.cuda()
 
             #print(self.predicted_body)
             #here
-            self.predicted_position = self.predicted_body
+            self.predicted_position = self.predicted_body + t_root2wrold_expand
             
             self.predicted_angle = predicted_angle
             self.predicted_translation = t_root2world
-            self.pred_glob_rot = rotation_global_matrot
+            #self.pred_glob_rot = rotation_global_matrot
 
             body_parms = self.P
 
@@ -343,17 +348,19 @@ class ModelAvatarPoser(ModelBase):
             #self.gt_body=self.bm(**{k:v for k,v in body_parms.items() if k in ['pose_body','trans', 'root_orient']})
             gt_rot_aa = torch.cat([body_parms['root_orient'], body_parms['pose_body']], dim = 1).reshape(-1,66)
             gt_trans_expand = body_parms['trans'].expand(22, body_parms['trans'].shape[0], body_parms['trans'].shape[1]).permute(1,0,2)
-            self.gt_body = fk_engine.from_aa(gt_rot_aa) + gt_trans_expand
+            #print(t_root2wrold_expand ,gt_trans_expand)
+            #print(gt_rot_aa.shape, gt_trans_expand.shape)
+            self.gt_body = fk_engine.from_aa(gt_rot_aa)
             self.gt_position = self.gt_body
 
             self.gt_local_angle = body_parms['pose_body']
             self.gt_global_translation = body_parms['trans']
             self.gt_global_orientation = body_parms['root_orient']
 
-            gt_local_rotation = torch.cat((body_parms['root_orient'], body_parms['pose_body']), dim = 1)
-            gt_local_rotation_matrot = aa2matrot(torch.cat([torch.zeros([gt_local_rotation.shape[0],3]).cuda(),gt_local_rotation[...,3:66]],dim=1).reshape(-1,3)).reshape(gt_local_rotation.shape[0],-1,9)
+            #gt_local_rotation = torch.cat((body_parms['root_orient'], body_parms['pose_body']), dim = 1)
+            #gt_local_rotation_matrot = aa2matrot(torch.cat([torch.zeros([gt_local_rotation.shape[0],3]).cuda(),gt_local_rotation[...,3:66]],dim=1).reshape(-1,3)).reshape(gt_local_rotation.shape[0],-1,9)
             
-            self.gt_global_rotation_matrot = local2global_pose(gt_local_rotation_matrot, self.bm.kintree_table[0][:22].long())
+            #self.gt_global_rotation_matrot = local2global_pose(gt_local_rotation_matrot, self.bm.kintree_table[0][:22].long())
             
 
             self.netG.train()
@@ -374,7 +381,7 @@ class ModelAvatarPoser(ModelBase):
         body_parms['trans'] = self.predicted_translation
         body_parms['position'] = self.predicted_position
         body_parms['body'] = self.predicted_body
-        body_parms['pred_glob_rot'] = self.pred_glob_rot
+        #body_parms['pred_glob_rot'] = self.pred_glob_rot
 
         return body_parms
 
@@ -385,7 +392,7 @@ class ModelAvatarPoser(ModelBase):
         body_parms['trans'] = self.gt_global_translation
         body_parms['position'] = self.gt_position
         body_parms['body'] = self.gt_body
-        body_parms['gt_glob_rot'] = self.gt_global_rotation_matrot
+        #body_parms['gt_glob_rot'] = self.gt_global_rotation_matrot
        # body_parms['rot_glob'] = self.rot_glob
         return body_parms
 
