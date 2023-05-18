@@ -9,7 +9,9 @@ nn.Module.dump_patches = True
 
 
 
-fk_engine = SMPLHForwardKinematics()
+#fk_engine = SMPLHForwardKinematics()
+fk_engine = smpl_fk.smpl_fk()
+
 class AvatarPoser(nn.Module):
     def __init__(self, input_dim, output_dim, num_layer, embed_dim, nhead, body_model, device):
         super(AvatarPoser, self).__init__()
@@ -37,13 +39,15 @@ class AvatarPoser(nn.Module):
 
         global_orientation = utils_transform.sixd2aa(global_orientation.reshape(-1,6)).reshape(global_orientation.shape[0],-1).float()
         joint_rotation = utils_transform.sixd2aa(joint_rotation.reshape(-1,6)).reshape(joint_rotation.shape[0],-1).float()
+        #pose_aa = torch.cat([global_orientation, joint_rotation], dim = 1) # (frame* 132)
+        #pose_rotmat = utils_transform.sixd2matrot(pose_aa.reshape(-1, 6)).reshape(pose_aa.shape[0], 22, 3, 3)
         
         # pvrevious code
-        #body_pose = body_model(**{'pose_body':joint_rotation, 'root_orient':global_orientation})
-        #joint_position = body_pose.Jtr
+        body_pose = body_model(**{'pose_body':joint_rotation, 'root_orient':global_orientation})
+        joint_position = body_pose.Jtr
 
-        joint_position = fk_engine.from_aa(torch.cat([global_orientation, joint_rotation], dim=1))
-
+        #joint_position = fk_engine.from_aa(torch.cat([global_orientation, joint_rotation], dim=1))
+        #(joint_position, dummy1), (dummy2, dummy3) = fk_engine.fk_batch(root_trans=None, poses = pose_rotmat)
 
         return joint_position
 

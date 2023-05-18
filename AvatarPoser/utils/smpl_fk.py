@@ -1,14 +1,15 @@
-import numpy as np
 import torch
+import numpy as np
+
 
 if __name__ == '__main__':
     print('This file is not ment to be run as main, but to be imported')
-    #exit()
+    exit()
 
 #SMPLH_PARENTS = [-1, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 12, 13, 14, 16, 17, 18, 19, 20, 22]
 #SMPLH original kinematic chain, 23 joints, last joint is right hand but parent is left hand (22), so changed to 21(left wrist)
 
-UNITY_PARENTS = [-1, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 12, 13, 14, 16, 17, 18, 19, 20, 21]
+UNITY_PARENTS = [-1, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 12, 13, 14, 16, 17, 18, 19]
 #SMPLH_SKELETON = np.array([
 #    [ 0,  0,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  9,  9, 12, 13, 14, 16, 17, 18, 19, 20, 21],
 #    [ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
@@ -62,26 +63,76 @@ UNITY_OFFSETS = torch.from_numpy(UNITY_OFFSETS).float()
 
 
 class smpl_fk:
-    def __init__(self, device = 'cpu'):
+    def __init__(self, device = 'cuda'):
         self.n_joints = len(UNITY_OFFSETS)
         self.device = device
+        self.n_joints = len(UNITY_OFFSETS)
+        self.offsets= UNITY_OFFSETS.to(device)
+        self.ex_offsets = EXTRA_JOINT_OFFSETS.to(device)
+        self.ex_rot = EXTRA_JOINT_ROTMAT.to(device)
+        self.device = device
+    def get_feet_joints(self):
+        return FEET_JOINTS
     def get_joint_names(self):
         return UNITY_OFFSETS_NAME
     def get_extra_joint_names(self):
         return EXTRA_JOINTS_NAME
 
+    
+    def fk_batch(self, root_trans, poses):
 
-    def fk_batch(self, root_trans, poses):        
+        self.offsets = self.offsets.detach()
+        self.ex_offsets = self.ex_offsets.detach()
+        self.ex_rot = self.ex_rot.detach()
+
+        global_positions, global_rotations = torch.zeros((poses.shape[0], 22, 3), device = self.device), torch.zeros((poses.shape[0], 22, 3, 3), device = self.device)
+        extra_positions, extra_rotations = torch.zeros((poses.shape[0], 3, 3), device = self.device), torch.zeros((poses.shape[0], 3, 3, 3), device = self.device)
+        count = 0
+
+        poses_copy_ = poses.clone()
+        poses_copy = poses_copy_
+
+        for joint in range(self.n_joints):
+            count = count+1
+            parent_j = UNITY_PARENTS[joint]
+
+            if parent_j == -1:
+                if root_trans != None:
+                    global_positions[:, joint] = root_trans
+                    global_rotations[:, joint] = poses_copy[:, joint]
+                else:
+                    init_trans = torch.zeros((poses.shape[0], 3), device = self.device)
+
+                    global_positions[:, joint] = init_trans
+                    global_rotations[:, joint] = poses_copy[:, joint]
+            else:
+                global_positions[:, joint] = torch.matmul(global_rotations[:, parent_j], self.offsets[joint].unsqueeze(-1)).squeeze(-1) + global_positions[:, parent_j]
+
+                #print(count, poses_copy[:, joint])
+                global_rotations[:, joint] = torch.matmul(global_rotations[:, parent_j].clone(), poses_copy[:, joint]) #여기서 문제 발생
+                #print(poses_copy[:, joint])
+             
+            #global_rotations = global_rotations.detach()
+            
+        for joint in range(self.ex_offsets.shape[0]):
+            parent_j = EXTRA_JOINT_PARENTS[joint]
+            extra_positions[:, joint] = torch.matmul(global_rotations[:, parent_j], self.ex_offsets[joint].unsqueeze(-1)).squeeze(-1) + global_positions[:, parent_j]
+            extra_rotations[:, joint] = torch.matmul(global_rotations[:, parent_j], self.ex_rot[joint])
+
+        return (global_positions, global_rotations), (extra_positions, extra_rotations)
+
+    def fk_batch_old(self, root_trans, poses):        
         global_positions, global_rotations = torch.zeros((poses.shape[0], 22, 3), device = self.device), torch.zeros((poses.shape[0], 22, 3, 3), device = self.device)
         extra_positions, extra_rotations = torch.zeros((poses.shape[0], 3, 3), device = self.device), torch.zeros((poses.shape[0], 3, 3, 3), device = self.device)
     
-
-        for i in range(poses.shape[0]):
-            (global_positions[i], global_rotations[i]), (extra_positions[i], extra_rotations[i]) = self.fk_w_extra(root_trans[i], poses[i])
+        if root_trans != None:
+            for i in range(poses.shape[0]):
+                (global_positions[i], global_rotations[i]), (extra_positions[i], extra_rotations[i]) = self.fk_w_extra(root_trans[i], poses[i])
+        else :
+            for i in range(poses.shape[0]):
+                (global_positions[i], global_rotations[i]), (extra_positions[i], extra_rotations[i]) = self.fk_w_extra(pose=poses[i])
         return (global_positions, global_rotations), (extra_positions, extra_rotations)
 
-
- 
     # root_trans: (3) = (x, y, z), translation of root joint
     # pose: (22, 3, 3) = (joints, rotation matrix(2x3)), rotation of each joint
     # returns: (22, 3), (22, 3, 3) = (joints, position), (joints, rotation matrix(3x3))
@@ -99,7 +150,7 @@ class smpl_fk:
             rebuilt_rotation_matrix = None
 
             if pose is None:
-                rebuilt_rotation_matrix = torch.eye(3,3) # identity matrix
+                rebuilt_rotation_matrix = torch.eye(3,3).to(self.device) # identity matrix
             elif pose.shape[1] == 2 :
                 rebuilt_rotation_matrix = torch.zeros(3,3)
                 rebuilt_rotation_matrix[:2, :] = pose[i]
@@ -107,8 +158,8 @@ class smpl_fk:
             else: # if pose.shape[1] == 3:
                 rebuilt_rotation_matrix = pose[i]
 
-            this_joint_position = UNITY_OFFSETS[i]
-            this_joint_rotation = rebuilt_rotation_matrix
+            this_joint_position = UNITY_OFFSETS[i].to(self.device)
+            this_joint_rotation = rebuilt_rotation_matrix.to(self.device)
 
             if(UNITY_PARENTS[i] != -1):
                 this_joint_position = torch.matmul(global_rotation[UNITY_PARENTS[i]], this_joint_position).reshape(3) + global_position[UNITY_PARENTS[i]]
@@ -119,8 +170,10 @@ class smpl_fk:
 
             global_position.append(this_joint_position)
             global_rotation.append(this_joint_rotation)
+
+
             
-        return torch.stack(global_position), torch.stack(global_rotation)
+        return torch.stack(global_position).to(self.device), torch.stack(global_rotation).to(self.device)
     
     # fk, but with extra joints
     # returns : 
@@ -128,11 +181,11 @@ class smpl_fk:
 
     def fk_w_extra(self, root_trans = None, pose = None):
         global_position, global_rotation = self.fk_frame(root_trans, pose)
-        extra_position = torch.zeros((len(EXTRA_JOINTS_NAME), 3))
-        extra_rotation = torch.zeros((len(EXTRA_JOINTS_NAME), 3, 3))
+        extra_position = torch.zeros((len(EXTRA_JOINTS_NAME), 3)).to(self.device)
+        extra_rotation = torch.zeros((len(EXTRA_JOINTS_NAME), 3, 3)).to(self.device)
         for i in range(len(EXTRA_JOINT_ROTMAT)):
-            extra_position[i] = torch.matmul(global_rotation[EXTRA_JOINT_PARENTS[i]], EXTRA_JOINT_OFFSETS[i])
+            extra_position[i] = torch.matmul(global_rotation[EXTRA_JOINT_PARENTS[i]], EXTRA_JOINT_OFFSETS[i].to(self.device))
             extra_position[i] = extra_position[i] + global_position[EXTRA_JOINT_PARENTS[i]]
-            extra_rotation[i] = torch.matmul(global_rotation[EXTRA_JOINT_PARENTS[i]], EXTRA_JOINT_ROTMAT[i])
+            extra_rotation[i] = torch.matmul(global_rotation[EXTRA_JOINT_PARENTS[i]], EXTRA_JOINT_ROTMAT[i].to(self.device))
         
         return (global_position, global_rotation), (extra_position, extra_rotation)

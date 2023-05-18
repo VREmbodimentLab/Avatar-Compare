@@ -30,7 +30,7 @@ class AMASS_Dataset(Dataset):
         dataroot = opt['dataroot']
         filenames_train = os.path.join(dataroot, 'train/*.pkl')
         filenames_test = os.path.join(dataroot, 'test/*.pkl')
-        print(filenames_test)
+        #print(filenames_test)
 
 # CMU,BioMotionLab_NTroje,MPI_HDM05
         if self.opt['phase'] == 'train':

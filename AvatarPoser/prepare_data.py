@@ -54,7 +54,7 @@ for dataroot_subset in ["MPI_HDM05", "BioMotionLab_NTroje", "CMU"]:
         idx = 0
         for filepath in filepaths:
             data = dict()
-            bdata = np.load(os.path.join("./support_data/body_models", filepath),allow_pickle=True)
+            bdata = np.load(os.path.join("./support_data", filepath),allow_pickle=True)
 
             # print(list(bdata.keys())) ### check keys of body data: ['trans', 'gender', 'mocap_framerate', 'betas', 'dmpls', 'poses']
             try:

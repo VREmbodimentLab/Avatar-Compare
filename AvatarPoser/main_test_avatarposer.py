@@ -178,7 +178,7 @@ def main(json_path='options/test_avatarposer.json'):
 #        gt_global_rotation_to_aa = torch.cat(gt_global_rotation_to_aa, dim = 1)
         
         #root_rot_error_ = torch.matmul(gt_root_angle_to_mat,torch.transpose(predicted_angle_to_mat,1,2))
-        #root_rot_error_ = torch.mean((torch.linalg.norm(matrot2aa(root_rot_error_), axis = 1)))
+        #root_rot_error_ = 
         ###############
 
         # Upper arm : 16, 17 upper leg : 1, 2

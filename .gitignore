@@ -1,4 +1,11 @@
 /AvatarPoser/data_fps60/
 /AvatarPoser/support_data/
+<<<<<<< Updated upstream
 /AvatarPoser/results/
 AvatarPoser/runs
+=======
+/AvatarPoser/results/g
+AvatarPoser/results/AvatarPoseEstimation/
+AvatarPoser/runs
+AvatarPoser/runs/May02_11-25-09_DESKTOP-51TKA10/
+>>>>>>> Stashed changes
