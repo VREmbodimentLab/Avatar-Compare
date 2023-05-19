@@ -8,6 +8,7 @@ import os
 #load pretrained model
 pretrained_model = torch.load('./model_zoo/avatarposer.pth')
 
+support_dir = 'support_data/'
 bm_fname_male = os.path.join(support_dir, 'body_models/smplh/{}/model.npz'.format('male'))
 dmpl_fname_male = os.path.join(support_dir, 'body_models/dmpls/{}/model.npz'.format('male'))
 num_betas = 16 # number of body parameters
@@ -27,7 +28,10 @@ model = net(input_dim=54,
 
 # load input data
 # input must be (frame, 54)
-input = np.load('./input.npy')
+input = np.load('./support_data/body_models/CMU/01/01_01_poses.npz')
+
+input_test = print(list(input.keys()))
+
 
 model.load_state_dict(pretrained_model)
 model.eval()

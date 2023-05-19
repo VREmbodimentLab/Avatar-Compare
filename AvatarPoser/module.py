@@ -14,7 +14,6 @@ server_socket.listen(1)
 print('Server Started')
 client_socket, addr = server_socket.accept()
 print('Client connected:', addr)
-
 # Network model 정의
 pretrained_model = torch.load('./model_zoo/avatarposer.pth')
 model = net()
